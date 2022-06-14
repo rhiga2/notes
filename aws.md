@@ -18,5 +18,7 @@ Type of storage solutions include:
 ### Non-Relational Databases
 * **Amazon DynamoDB**: NoSQL database that is more scalaable, performant, and has a less rigid schema than RDS, but does not support joins and relations between tables. 
 * Items: Rows of table. Each item has a primary key as an identifier. 
-* Attributes: Columns of table 
+* Attributes: Columns of table
+## Monitoring
+
 
