@@ -30,7 +30,7 @@ do |i|
   i + 1
 end
 ```
-### Classes: 
+### Classes
 * Classes can only inherit from one superclass
 * Mixins: add additional functionality to classes without inheritance. We determine if a class can extend a mixin using duck typing. 
   For instance, a class can extend `enumerable` if it implements `each` and can extend `comparable` if it implements `<=>`.
