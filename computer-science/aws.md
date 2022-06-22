@@ -21,12 +21,21 @@ Type of storage solutions include:
 * Items: Rows of table. Each item has a primary key as an identifier. 
 * Attributes: Columns of table
 ## Monitoring
-* Metrics: Time series data (i.e. CPU utilization, memory consumption, number of threads, ...) 
-  * Namespace
-  * Dimensions: key-value pair attached to metric. Helps to search for metrics
-* Logs: Text data output from application
-  * Log Event
-  * Log Stream
-  * Log Groups
-* CloudWatch: Centralized location for logs metrics from application or infrastructure 
-
+### Metrics
+* Time series data such as CPU utilization, latency, memory consumption, etc...
+* Namespace
+* Dimensions: key-value pair attached to metric. Helps to search for metrics
+### Logs
+* Text data generated from application such as stack traces, thread dumps, heap dumps, etc...
+* Log Event
+* Log Stream
+* Log Groups
+### CloudWatch
+* Centralized location for logs and metrics from application or infrastructure
+* Accepts custom logs and metrics 
+## Load Balancing
+### Application Load Balancer
+* Listener: ports and protocols
+* Target Group: EC2 instances, ip addresses, AWS lambdas, etc ... to route requests to
+* Rule: how requests are routed target 
+* 
