@@ -2,6 +2,7 @@
 ## Identity and Access Management
 ## Compute
 ## Virtual Private Cloud
+### Subnets
 ## Storage Solutions
 ### Storage Types
 Type of storage solutions include:
@@ -33,9 +34,10 @@ Type of storage solutions include:
 ### CloudWatch
 * Centralized location for logs and metrics from application or infrastructure
 * Accepts custom logs and metrics 
-## Load Balancing
-### Application Load Balancer
-* Listener: ports and protocols
+## Load Balancing and Autoscaling
+### Elastic Load Balancer
+* Highly available, regional, and automatically scalable
+* Listener: ports and protocols that client connects to
 * Target Group: EC2 instances, ip addresses, AWS lambdas, etc ... to route requests to
-* Rule: how requests are routed target 
-* 
+* Rule: how requests are routed target. For example, round robin routing algorithm or least outstanding request routing algorithm
+### EC2 Autoscaling
