@@ -7,20 +7,20 @@ The Expectation Maximization Algorithm
 
 # Mixture Models
 * A mixture model is an example of latent variable model where the latent variables are discrete $( Z \sim \text{Cat}(\pi_1, ..., \pi_K))$.
-$$
+``` math
 \begin{aligned}
 p_\theta(X) &= \sum_{k=1}^K p_\theta(X | Z=k) \underbrace{p_\theta(Z=k)}_{\pi_k} \\
 	&= \sum_{k=1}^K \pi_k p_\theta(X | Z=k)
 \end{aligned}
-$$
+```
 * Maximum likelihood estimation of mixture models is difficult because the likelihood is a sum of densities, which is difficult to optimize.
-$$
+``` math
 \max_\theta \log p_\theta(X) \equiv \max_\theta \log \left( \sum_{k=1}^K \pi_k p_\theta(X | Z=k) \right) 
-$$
+```
 
 # Evidence Lower Bound
 * Instead of maximizing the likelihood directly, we can maximize a lower bound on the likelihood. The intuition is that if we find a tight lower bound that is easier to maximize we can maximize the likelihood indirectly.  
-$$
+``` math
 \begin{aligned}
 l(\theta) &= \log( p_\theta(X) ) = E_{Z \sim q} \left[ \log(p_\theta(X)) \right] \\
 	&= E_{Z \sim q} \left[ \log \left( p_\theta(X) \frac{q(Z)}{q(Z)} \right) \right] \\
@@ -29,7 +29,7 @@ l(\theta) &= \log( p_\theta(X) ) = E_{Z \sim q} \left[ \log(p_\theta(X)) \right]
    	&= F(q, \theta) + D_{KL}(q || p_\theta(\cdot | X)) \\
 	& \ge F(q, \theta)
 \end{aligned}
-$$
+```
 * The quantity $F(q, \theta)$ is called the Evidence Lower Bound (ELBO), because it is a lower bound on the log-likelihood. 
 
 # Expectation Maximization Algorithm
