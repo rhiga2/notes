@@ -26,7 +26,7 @@ Probability Introduction
 
 * $P(\emptyset) = 0$
 ``` math
-P(\empty) = 1 - P(\Omega) = 1 - 1 = 0
+P(\emptyset) = 1 - P(\Omega) = 1 - 1 = 0
 ```
 
 * If $A \subset B$, then $P(A) \le P(B)$
