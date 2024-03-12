@@ -19,22 +19,22 @@ Probability Introduction
 3. If $A_1, A_2, ... \in \mathcal{F}$ are disjoint, then $P (\cup_{i=1}^\infty A_i) = \sum_{i=1}^\infty P(A_i)$
 
 # Properties of Probability Measures
-* $P(A^c) = 1 - P(A)$
+* Complements: $P(A^c) = 1 - P(A)$
 ``` math
 1 = P(\Omega) = P(A \cup A^c) = P(A) + P(A^c)
 ```
 
-* $P(\emptyset) = 0$
+* Empty set: $P(\emptyset) = 0$
 ``` math
 P(\emptyset) = 1 - P(\Omega) = 1 - 1 = 0
 ```
 
-* If $A \subset B$, then $P(A) \le P(B)$
+* Subsets: If $A \subset B$, then $P(A) \le P(B)$
 ``` math
 P(B) = P(A \cup (B \cap A^c)) = P(A) + P(B \cap A^c) \ge P(A)
 ```
 
-* $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+* Inclusion-exclusion: $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
 ``` math
 \begin{aligned}
 P(A \cup B) &= P(A \cup (B \cap A^c)) = P(A) + P(B \cap A^c) \\ 
