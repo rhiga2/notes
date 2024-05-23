@@ -100,4 +100,11 @@
     ```
     Creates a table with the attributes `name`, `department`, and `salary`.
 
+### Drop Table
+* We can drop tables with the `DROP TABLE` statement.
+    ``` sql
+    DROP TABLE faculty;
+    ```
+    Deletes the `faculty` table.
+
 ## Inserting, Updating, and Deleting with SQL
