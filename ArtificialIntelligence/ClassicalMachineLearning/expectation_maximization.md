@@ -63,7 +63,7 @@ Q(\theta, \bar{\theta}) = E_{Z \sim p_{\bar{\theta}}(\cdot | X)} \left[ \log \le
 	``` math
 	p_{\theta}(X) = \sum_{k=1}^K \pi_k \mathcal{N}(X | \mu_k, \Sigma_k)
 	``` 
-* $\theta = \{(\pi_k, \mu_k, \Sigma_k)\}_{k=1}^K$.
+	where $\theta = \{(\pi_k, \mu_k, \Sigma_k)\}_{k=1}^K$.
 ### E-step
 * In the E-step, we need to find $w_k^{(i)} = p_{\bar{\theta}}(z^{(i)} = k | x^{(i)})$:
 ``` math
@@ -86,4 +86,9 @@ w_k^{(i)} = p_{\bar{\theta}}(z^{(i)} = k | x^{(i)}) = \frac{\bar{\pi_k} \mathcal
 	```
 * We get the following results for the updated param estimates:
 	``` math
+	\begin{gathered}
+	\bar{\pi_k} = \frac{1}{N} \sum_{i=1}^N w_k^{(i)} \\
+	\bar{\mu_k} = \frac{\sum_{i=1}^N w_k^{(i)} x^{(i)}}{\sum_{i=1}^N w_k^{(i)}} \\
+	\bar{\Sigma_k} = \frac{\sum_{i=1}^N w_k^{(i)} (x^{(i)} - \bar{\mu_k})(x^{(i)} - \bar{\mu_k})^T}{\sum_{i=1}^N w_k^{(i)}}
+	\end{gathered}
 	```

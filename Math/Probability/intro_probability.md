@@ -21,23 +21,36 @@
 ### Properties of Probability Measures
 * Complements: $P(A^c) = 1 - P(A)$
 ``` math
-1 = P(\Omega) = P(A \cup A^c) = P(A) + P(A^c)
+\begin{aligned}
+1 & = P(\Omega) \\
+& = P(A \cup A^c) \\
+& = P(A) + P(A^c)
+\end{aligned}
 ```
 
 * Empty set: $P(\emptyset) = 0$
 ``` math
-P(\emptyset) = 1 - P(\Omega) = 1 - 1 = 0
+\begin{aligned}
+P(\emptyset) &= 1 - P(\Omega) \\
+&= 1 - 1 = 0
+\end{aligned}
 ```
 
 * Subsets: If $A \subset B$, then $P(A) \le P(B)$
 ``` math
-P(B) = P(A \cup (B \cap A^c)) = P(A) + P(B \cap A^c) \ge P(A)
+\begin{aligned}
+P(B) &= P(A \cup (B \cap A^c)) \\ 
+& = P(A) + P(B \cap A^c) \\
+& \ge P(A)
+\end{aligned}
 ```
 
-* Inclusion-exclusion: $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+* Inclusion-exclusion: 
+$P(A \cup B) = P(A) + P(B) - P(A \cap B)$
 ``` math
 \begin{aligned}
-P(A \cup B) &= P(A \cup (B \cap A^c)) = P(A) + P(B \cap A^c) \\ 
+P(A \cup B) &= P(A \cup (B \cap A^c)) \\
+& = P(A) + P(B \cap A^c) \\ 
 &= P(A) + P(B) - P(A \cap B)
 \end{aligned}
 ```
