@@ -17,68 +17,68 @@
 ## Representing Data Types in Lambda Calculus
 ### Church Numerals
 * Church numerals are a way to represent natural numbers in lambda calculus.
-    ```math
-    \begin{align*}
-    f_0 & = \lambda f. \lambda x. x \\
-    f_1 & = \lambda f. \lambda x. fx \\
-    f_2 & = \lambda f. \lambda x. f(fx) \\
-    & ... \\
-    f_n & = \lambda f. \lambda x. f^n x \\
-    \end{align*}
-    ```
+ ```math
+ \begin{align*}
+ f_0 & = \lambda f. \lambda x. x \\
+ f_1 & = \lambda f. \lambda x. fx \\
+ f_2 & = \lambda f. \lambda x. f(fx) \\
+ & ... \\
+ f_n & = \lambda f. \lambda x. f^n x \\
+ \end{align*}
+ ```
 * We can define arithmetic operations on Church numerals using lambda calculus. Let $m$ and $n$ be Church numerals.
-    ```math
-    \begin{gathered}
-    f_{\text{add}} = \lambda m. \lambda n. \lambda f. \lambda x. m f (n f x) \\
+ ```math
+ \begin{gathered}
+ f_{\text{add}} = \lambda m. \lambda n. \lambda f. \lambda x. m f (n f x) \\
 
-    f_{\text{mult}} = \lambda m. \lambda n. \lambda f. m (n f) \\
-    \end{gathered}
-    ```
+ f_{\text{mult}} = \lambda m. \lambda n. \lambda f. m (n f) \\
+ \end{gathered}
+ ```
 
 ### Church Booleans
 * Church booleans are a way to represent boolean values in lambda calculus.
-    ```math
-    \begin{aligned}
-    T & = \lambda x. \lambda y. x \\
-    F & = \lambda x. \lambda y. y \\
-    \end{aligned}
-    ```
+ ```math
+ \begin{aligned}
+ T & = \lambda x. \lambda y. x \\
+ F & = \lambda x. \lambda y. y \\
+ \end{aligned}
+ ```
 * We can define logical operations on Church booleans using lambda calculus.
-    ```math
-    \begin{gathered}
-    f_{\text{and}} = \lambda p. \lambda q. p q F \\
-    f_{\text{or}} = \lambda p. \lambda q. p T q \\
-    f_{\text{not}} = \lambda p. p F T \\
-    \end{gathered}
-    ```
-    A good way of visualize these operators is with a truth table:
-    | a | b | c | abc |
-    | --- | --- | --- | --- |
-    | $F$ | $F$ | $F$ | $F$ (and)  |
-    | $F$ | $F$ | $T$ | $T$ (not) |
-    | $F$ | $T$ | $F$ | $F$ (and, or) |
-    | $F$ | $T$ | $T$ | $T$ (or) |
-    | $T$ | $F$ | $F$ | $F$ (and) |
-    | $T$ | $F$ | $T$ | $F$ (not) |
-    | $T$ | $T$ | $F$ | $T$ (and, or) |
-    | $T$ | $T$ | $T$ | $T$ (or) |
+ ```math
+ \begin{gathered}
+ f_{\text{and}} = \lambda p. \lambda q. p q F \\
+ f_{\text{or}} = \lambda p. \lambda q. p T q \\
+ f_{\text{not}} = \lambda p. p F T \\
+ \end{gathered}
+ ```
+ * A good way of visualize these operators is with a truth table:
+   | a | b | c | abc |
+   | --- | --- | --- | --- |
+   | $F$ | $F$ | $F$ | $F$ (and)  |
+   | $F$ | $F$ | $T$ | $T$ (not) |
+   | $F$ | $T$ | $F$ | $F$ (and, or) |
+   | $F$ | $T$ | $T$ | $T$ (or) |
+   | $T$ | $F$ | $F$ | $F$ (and) |
+   | $T$ | $F$ | $T$ | $F$ (not) |
+   | $T$ | $T$ | $F$ | $T$ (and, or) |
+   | $T$ | $T$ | $T$ | $T$ (or) |
 
 ### Representing ADTs with Lambda Calculus
 * If an ADT, has $n$ constructors, we can represent it with a abstraction with $n$ arguments.
 * A list type can be represented as:
-    ```math
-    \begin{align*}
-    \text{Nil} & =  \\
-    \text{Cons} & =  \\
-    \end{align*}
-    ```
+```math
+\begin{align*}
+\text{Nil} & =  \\
+\text{Cons} & =  \\
+\end{align*}
+```
 * A maybe type can be represented as:
-    ```math
-    \begin{align*}
-    \text{Nothing} & = \\
-    \text{Just} & =  \\
-    \end{align*}
-    ``` 
+```math
+\begin{align*}
+\text{Nothing} & = \\
+\text{Just} & =  \\
+\end{align*}
+``` 
 
 ## Lambda Calculus and Recursion
 ### Y-Combinators
