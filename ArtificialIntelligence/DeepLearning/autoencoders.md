@@ -14,7 +14,7 @@ J(\theta, \phi) & = -F(p_\theta, \phi) \\
     & = -E_{z \sim p_\theta(\cdot | x)} \left[ \log q_\phi(x | z) \right] + D_{KL}(p_\theta(z | x) || p(z)) 
 \end{aligned}      
 ```
-where $p(z)$ is a standard Gaussian distribution.
+* $p(z)$ is a standard Gaussian distribution.
 
 ### The Reparameterization Trick
 * In the forward pass, we sampled from a Gaussian distribution. How do we backpropagate through sampling?
@@ -22,7 +22,7 @@ where $p(z)$ is a standard Gaussian distribution.
 ```math
 z = \mu_\theta(x) + \sigma_\theta(x) \epsilon
 ```
-Sampling in this way decouples the randomness from direct dependence on the parameters.
+* Sampling in this way decouples the randomness from direct dependence on the parameters.
 
 
 
