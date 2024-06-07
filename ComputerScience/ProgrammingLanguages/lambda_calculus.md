@@ -68,15 +68,15 @@
 * A list type can be represented as:
     ```math
     \begin{align*}
-    \text{Nil} & =  \\
-    \text{Cons} & =  \\
+    \text{Nil} & = \lambda cn.n \\
+    \text{Cons} \: x \: y & = \lambda cn.cxy \\
     \end{align*}
     ```
 * A maybe type can be represented as:
     ```math
     \begin{align*}
-    \text{Nothing} & = \\
-    \text{Just} & =  \\
+    \text{Nothing} & = \lambda jn.n \\
+    \text{Just} \: a & = \lambda jn.ja \\
     \end{align*}
     ``` 
 
