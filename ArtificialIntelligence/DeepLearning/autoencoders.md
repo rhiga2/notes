@@ -22,7 +22,7 @@ J(\theta, \phi) & = -F(p_\theta, \phi) \\
 ```math
 z = \mu_t\theta(x) + \sigma_\theta(x) \epsilon
 ```
-* Instead of a random operation on your params, we instead decouple the randomness as it's own parameter $\epsilon$.
+* Cannot do backprop on stochatic operation so instead use a deterministic operation with random input $\epsilon$.  
 
 
 
