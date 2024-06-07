@@ -18,7 +18,7 @@ J(\theta, \phi) & = -F(p_\theta, \phi) \\
 
 ### The Reparameterization Trick
 * In the forward pass, we sampled from a Gaussian distribution. How do we backpropagate through sampling?
-* We instead sample from a standard Gaussian distribution $\epsilon \sim \mathcal{N}(0, 1)$ and transform it to $z$ using the mean and variance of $p_\theta(z | x)$:
+* We instead sample from a standard Gaussian distribution $\epsilon \sim \mathcal{N}(0, 1)$ and transform it to $z$ using the mean and variance output by the encoder:
 ```math
 z = \mu_\theta(x) + \sigma_\theta(x) \epsilon
 ```
