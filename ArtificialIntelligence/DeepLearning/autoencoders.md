@@ -20,9 +20,9 @@ J(\theta, \phi) & = -F(p_\theta, \phi) \\
 * In the forward pass, we sampled from a Gaussian distribution. How do we backpropagate through sampling?
 * We instead sample from a standard Gaussian distribution $\epsilon \sim \mathcal{N}(0, 1)$ and transform it to $z$ using the mean and variance output by the encoder:
 ```math
-z = \mu_\theta(x) + \sigma_\theta(x) \epsilon
+z = \mu_t\theta(x) + \sigma_\theta(x) \epsilon
 ```
-* Sampling in this way decouples the randomness from direct dependence on the parameters.
+* Instead of a random operation on your params, we instead decouple the randomness as it's own parameter $\epsilon$.
 
 
 
