@@ -3,7 +3,7 @@
 ## Autoencoders
 * An autoencoder is a neural network that learns to replicate the input as the output. 
 * Autoencoders consist of an encoder and a decoder. The encoder $f_\phi$ maps the input to a latent space representation, and the decoder $g_\theta$ maps the latent space representation to the output.
-* We want the latent space to be a lower dimension than the input space. This assumes that the input data has some underlying structure that can be captured in a lower dimension.
+* We want the latent space to be a lower dimension $d$ than the input space dimension $m$. This assumes that the input data has some underlying structure that can be captured in a lower dimension.
 * The loss function of the autoencoder (also known as reconstruction loss) measures how well the output resembles the input. 
 ```math
 J(\phi, \theta) = E[ \mathcal{L}(x, g_\theta(f_\phi(x)))]
@@ -25,25 +25,37 @@ J(\phi, \theta) = E[ ||x - g_\theta(f_\phi(x))||_2^2]
 
 ## Variational Autoencoders
 * Instead of treating the encoder-decoder as deterministic functions, we can treat them probabilistic functions $q_\phi(z | x)$ and $p_\theta(x | z)$ respectively.
-* We assume that $q_\phi(z | x)$ is a Gaussian distribution with mean $\mu_\phi(x)$ and variance $\sigma_\phi(x)$.
+* We assume that $q_\phi(z | x)$ is a Gaussian distribution with mean $\mu_\phi(x) \in \mathbb{R}^d$ and standard deviation $\sigma_\phi(x) \in \mathbb{R}^d$.
 ```math
-q_\phi(z | x) = \mathcal{N}(z | \mu_\phi(x), \sigma_\phi(x)) 
+q_\phi(z | x) = \mathcal{N}(z | \mu_\phi(x), \text{diag}(\sigma_\phi(x)))
+```
+* Note that standard deviation is positive so we can have the encoder predict the log variance $\psi_\phi(x)$ and exponentiate it to get the standard deviation. 
+```math
+\sigma_\phi(x) = \exp(0.5 \psi_\phi(x))
 ```
 * In the forward pass, we sample $z$ from $q_\phi(z | x)$ and pass it through the decoder $p_\theta(x | z)$ to get the reconstructed output.
-* The loss function is the negative ELBO:
+* The loss function for data $x$ is the negative ELBO:
 ```math 
 \begin{aligned}
 J(\phi, \theta) & = -F(q_\phi, \theta) \\
-    & = -E_{z \sim q_\phi(\cdot | x)} \left[ \log p_\theta(x | z) \right] + D_{KL}(q_\phi(z | x) || q(z)) 
+    & = -E_{z \sim q_\phi(\cdot | x)} \left[ \log p_\theta(x | z) \right] + D_{KL}(q_\phi(\cdot | x) || q) 
 \end{aligned}      
 ```
-* Note that in practice $q(z)$ is a standard Gaussian distribution.
+* Note that in practice $q$ is a standard Gaussian distribution $\mathcal{N}(0, I)$.
+* KL divergence of two Gaussian distributions is given by:
+```math
+D_{KL}(p || q) = \frac{1}{2} \left( \text{tr}(\Sigma_q^{-1} \Sigma_p) + (\mu_q - \mu_p)^T \Sigma_q^{-1} (\mu_q - \mu_p) - d + \log \frac{\text{det}(\Sigma_q)}{\text{det}(\Sigma_p)} \right)
+```
+* Plugging in the values for $q_\phi(z | x)$ and $q(z)$, we get:
+```math
+D_{KL}(q_\phi|| q) = \frac{1}{2} \left( \sum_{j=1}^d (\sigma_{\phi, j}^2(x) - 1 + \mu_{\phi, j}^2(x) - \log \sigma_{\phi, j}^2(x))  \right)
+```
 
 ### The Reparameterization Trick
 * In the forward pass, we sampled from a Gaussian distribution. How do we backpropagate through sampling?
-* We instead sample from a standard Gaussian distribution $\epsilon \sim \mathcal{N}(0, 1)$ and transform it to $z$ using the mean and variance output by the encoder:
+* We instead sample from a standard Gaussian distribution $\epsilon \sim \mathcal{N}(0, I)$ and transform it to $z$ using the mean and variance output by the encoder:
 ```math
-z = \mu_\theta(x) + \sigma_\theta(x) \epsilon
+z = \mu_\theta(x) + \sigma_\theta(x) \odot \epsilon
 ```
 * With the reparametrization trick, we decoupled randomness from the forward pass. This allows us to backpropagate.
 
