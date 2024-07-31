@@ -22,49 +22,72 @@
 ### Tail Recursion
 * Tail recursion is a special form of recursion where the returned subexpression is either a base case or a recusive call only.
 * Tail recursion can be optimized by the compiler.
-    ```haskell
-    factorial :: Integer -> Integer
-    factorial n = aux n 1
-        where aux 0 a = a
-              aux n a = aux (n - 1) (n * a)
-    ```
+```haskell
+factorial :: Integer -> Integer
+factorial n = aux n 1
+    where aux 0 a = a
+            aux n a = aux (n - 1) (n * a)
+```
+
+### Continuations
+* Continuations are functions that represent the future of a computation.
+* Continuation passing style (CPS) programs pass continuations as an argument to each function.
+* Programs in CPS are tail recursive and can be optimized by the compiler. 
+* CPS can manipulate the control flow of the program whereas regular tail recursion does not. For example, CPS can similate multitasking and exceptions. 
+* Converting functions from direct style to CPS involves passing a continuation $k$ as an argument to the function. 
+* Conversion cases:
+    1. Expressions with no function calls: apply continuation to expression.
+    2. Expressions with single, outer function call: pass the continuation to the function call.
+    3. Other expressions: create a new continuation that applies the original continuation to the result of the expression.
+* Example convert the following function to CPS:
+```haskell
+foo :: Int -> Int
+foo 0 = 0
+foo n | n < 0 = foo (n+1)
+      | otherwise = inc(foo (n - 1))
+```
+* Converted to CPS:
+```haskell
+foo :: Int -> (Int -> Int) -> Int
+foo 0 k = 0
+foo n | n < 0 = foo (n+1) k
+      | otherwise = foo (n - 1) (\v -> inc v k)
+```
 
 ### Higher Order Functions
 * Higher order functions are functions that take other functions as arguments or return functions as results.
 
 ### Map Function
 * The `map` function applies a function `f` to each element of a list.
-    ```haskell
-    map :: (a -> b) -> [a] -> [b]
-    map f [] = []
-    map f (x:xs) = f x : map f xs
-    ```
+```haskell
+map :: (a -> b) -> [a] -> [b]
+map f [] = []
+map f (x:xs) = f x : map f xs
+```
 
 ### Foldr Function
 * The `foldr` function reduces a list to a single value by applying a function `f` to each element of the list.
-    ```haskell
-    foldr :: (a -> b -> b) -> b -> [a] -> b
-    foldr f z [] = z
-    foldr f z (x:xs) = f x (foldr f z xs)
-    ```
+```haskell
+foldr :: (a -> b -> b) -> b -> [a] -> b
+foldr f z [] = z
+foldr f z (x:xs) = f x (foldr f z xs)
+```
 
 ## Algebraic Data Types
 ### Product Types
-* Product types are types that contain multiple values. Examples include tuples and records.
-    ```haskell
-    data Point = Point { x :: Int, y :: Int }
-    ```
-    The `Point` class is an example of a record. 
+* Product types are types that contain multiple values. Examples include tuples and records. The `Point` class is an example of a record. 
+```haskell
+data Point = Point { x :: Int, y :: Int }
+```
 
 ### Sum Types
-* Sum types are types that can have multiple forms.
-    ```haskell
-    data List a = Nil 
-                | Cons a (List a)
-    data BTree a = Nil
-                | Node a (BTree a) (BTree a)
-    ```
-    Example of recursive data structures: linked lists and binary trees.
+* Sum types are types that can have multiple forms. The following example shows how to implement a linked list and a binary tree.
+```haskell
+data List a = Nil 
+            | Cons a (List a)
+data BTree a = Nil
+            | Node a (BTree a) (BTree a)
+```
 
 #### Maybe Type
 * The `Maybe` type is a sum type that represents a value that may or may not exist.
@@ -79,3 +102,11 @@
     data Either a b = Left a
                     | Right b
     ```
+
+## Type Classes
+* Polymorphism in Haskell is achieved through type classes.
+
+## Functors, Applicatives, and Monads
+### Functors
+### Applicatives
+### Monads

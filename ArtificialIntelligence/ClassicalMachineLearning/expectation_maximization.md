@@ -75,7 +75,7 @@ w_k^{(i)} = p_{\bar{\theta}}(z^{(i)} = k | x^{(i)}) = \frac{\bar{\pi_k} \mathcal
 ``` math
 \begin{aligned}
 \max_\theta Q(\theta, \bar{\theta}) &= E_{z \sim p_{\bar{\theta}}(\cdot | x)} \left[ \log \left( p_\theta(x, z) \right) \right] \\
-	& = \sum_{i=1}^N \sum_{k=1}^K w_k^{(i)} \left( \log \pi_k + \log \mathcal{N}(x^{(i)} | \mu_k, \Sigma_k) \right)
+	& = \sum_{i=1}^n \sum_{k=1}^K w_k^{(i)} \left( \log \pi_k + \log \mathcal{N}(x^{(i)} | \mu_k, \Sigma_k) \right)
 \end{aligned}
 ```
 * We can find the maximum likelihood estimator of $\theta$ by setting the gradient of the Langragian wrt $\theta$ to zero.
@@ -87,8 +87,8 @@ w_k^{(i)} = p_{\bar{\theta}}(z^{(i)} = k | x^{(i)}) = \frac{\bar{\pi_k} \mathcal
 * We get the following results for the updated param estimates:
 ``` math
 \begin{gathered}
-\bar{\pi_k} = \frac{1}{N} \sum_{i=1}^N w_k^{(i)} \\
-\bar{\mu_k} = \frac{\sum_{i=1}^N w_k^{(i)} x^{(i)}}{\sum_{i=1}^N w_k^{(i)}} \\
-\bar{\Sigma_k} = \frac{\sum_{i=1}^N w_k^{(i)} (x^{(i)} - \bar{\mu_k})(x^{(i)} - \bar{\mu_k})^T}{\sum_{i=1}^N w_k^{(i)}}
+n_k = \sum_{i=1}^n w_k^{(i)}, \; \bar{\pi_k} = \frac{1}{n} n_k \\
+\bar{\mu_k} = \frac{1}{n_k} \sum_{i=1}^n w_k^{(i)} x^{(i)}\\
+\bar{\Sigma_k} = \frac{1}{n_k} \sum_{i=1}^n w_k^{(i)} (x^{(i)} - \bar{\mu_k})(x^{(i)} - \bar{\mu_k})^T
 \end{gathered}
 ```

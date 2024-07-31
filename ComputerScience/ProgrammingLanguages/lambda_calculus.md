@@ -26,13 +26,13 @@
  f_n & = \lambda f. \lambda x. f^n x \\
  \end{align*}
  ```
-* We can define arithmetic operations on Church numerals using lambda calculus. Let $m$ and $n$ be Church numerals.
+* We can define addition on Church numerals based on the equation $f^n(f^m(x)) = f^{(n+m)}(x)$:
  ```math
- \begin{gathered}
  f_{\text{add}} = \lambda m. \lambda n. \lambda f. \lambda x. m f (n f x) \\
-
+ ```
+* Likewise, we can define multiplication on Church numerals based on the equation $(f^n)^m = f^{m \cdot n}$:
+ ```math
  f_{\text{mult}} = \lambda m. \lambda n. \lambda f. m (n f) \\
- \end{gathered}
  ```
 
 ### Church Booleans
@@ -51,7 +51,7 @@
  f_{\text{not}} = \lambda p. p F T \\
  \end{gathered}
  ```
- * A good way of visualize these operators is with a truth table:
+ * A good way of visualize these operators is with a three variable truth table:
    | a | b | c | abc |
    | --- | --- | --- | --- |
    | $F$ | $F$ | $F$ | $F$ (and)  |
@@ -80,5 +80,19 @@
 \end{align*}
 ``` 
 
-## Lambda Calculus and Recursion
+## Recursion in Lambda Calculus
 ### Y-Combinators
+* Suppose we are trying to implement the recursion `f n = f g n`. How does $f$ know about itself in the definition?
+```math 
+f = \lambda n . f (gn)
+```
+* Instead of calling $f$ make call to another function $h$ that's a parameter to $f$.
+```math
+f = \lambda h.\lambda n . h (gn)
+```
+* For $h$ we pass in a copy of $f$. 
+```math
+\begin{aligned}
+ff =(\lambda h.\lambda n . h (gn))(\lambda h.\lambda n . h (gn))
+\end{aligned}
+```

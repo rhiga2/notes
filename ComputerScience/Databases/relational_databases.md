@@ -28,25 +28,24 @@
     ```
 * Natural Join: Set of all concatenated tuples that have the same values on the attributes that are common to both relations. A natural join is denoted as $R \bowtie S$.
 
-## Querying with Structured Query Language (SQL)
+## Structured Query Language (SQL)
 ### SELECT-FROM-WHERE
 * SQL is a declarative language that allows users to query, insert, update, and delete data in a relational database.
 * The basic query format uses the `SELECT-FROM-WHERE` clause:
-    ``` sql
-    SELECT <attributes>
-    FROM <relation>
-    WHERE <condition>
-    ```
+``` sql
+SELECT <attributes>
+FROM <relation>
+WHERE <condition>
+```
 * `SELECT` acts like a projection, `FROM` acts like a cartesian product (if more than one table is specified), and `WHERE` acts like a selection.
 ### Aggregation
 #### Aggregation Functions
-* SQL supports aggregation functions like  `COUNT, SUM, AVG, MIN`, and `MAX`.
-    ``` sql
-    SELECT COUNT(*)
-    FROM faculty
-    WHERE department = 'Computer Science'
-    ```
-    This query counts the number of CS faculty.
+* SQL supports aggregation functions like  `COUNT, SUM, AVG, MIN`, and `MAX`. This query returns the number of faculty in the Computer Science department.
+``` sql
+SELECT COUNT(*)
+FROM faculty
+WHERE department = 'Computer Science'
+```
 
 #### GROUP BY
 * We can use the `GROUP BY` clause to group the results of an aggregation function by a set of attributes. 
@@ -75,13 +74,12 @@
 
 #### Scalar Subqueries
 * Scalar subqueries return a single value.
-* We can use scalar subqueries in the SELECT and WHERE clauses.
-    ``` sql
-    SELECT name 
-    FROM faculty
-    WHERE salary > (SELECT AVG(salary) FROM faculty)
-    ```
-    Return faculty whose salary is greater than the average faculty salary.
+* We can use scalar subqueries in the SELECT and WHERE clauses. For example, the following query returns faculty whose salary is greater than the average faculty salary.
+``` sql
+SELECT name 
+FROM faculty
+WHERE salary > (SELECT AVG(salary) FROM faculty)
+```
 
 #### Table Subqueries
 * Table subqueries return a table.
@@ -91,20 +89,18 @@
 ## Managing Tables with SQL
 ### Creating Tables
 * We can create tables with the `CREATE TABLE` statement.
-    ``` sql
-    CREATE TABLE faculty (
-        name VARCHAR(50) primary key,
-        department VARCHAR(50),
-        salary INT
-    );
-    ```
-    Creates a table with the attributes `name`, `department`, and `salary`.
+``` sql
+CREATE TABLE faculty (
+    name VARCHAR(50) primary key,
+    department VARCHAR(50),
+    salary INT
+);
+```
 
 ### Drop Table
 * We can drop tables with the `DROP TABLE` statement.
-    ``` sql
-    DROP TABLE faculty;
-    ```
-    Deletes the `faculty` table.
+``` sql
+DROP TABLE faculty;
+```
 
-## Inserting, Updating, and Deleting with SQL
+### Inserting, Updating, and Deleting Tuples

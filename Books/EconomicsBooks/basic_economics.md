@@ -10,9 +10,9 @@
 * Economic systems
     * Centralized economies: Central control of resource allocation. No one entiyty can know all the information needed to allocate resources efficiently. 
     * Market economies use prices to allocate resources efficiently. Prices are determined by market forces of supply and demand.
-* Demand versus need 
-* Economically available supply versus natural supply
-* "Real" value 
-    * No zero sum transactions
-* Greed
-* "Unmet needs"
+* Myths and misconceptions
+    * Demand versus need 
+    * Economically available supply versus natural supply
+    * "Real" value does not exist as value is subjective
+    * Greed
+    * "Unmet needs"
