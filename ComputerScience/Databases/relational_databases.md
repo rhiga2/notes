@@ -1,13 +1,13 @@
-# Relational Databases 
-
-## Relational Algebra 
+Relational Algebra
+==============
+# Relational Algebra 
 * Algebras consist of operands and operators. 
 * In arthimetic, the operands are numbers and the operators are addition, subtraction, multiplication, and division.
 * In relational algebra, the operands are relations and the operators are selection, projection, union, set difference, cartesian product, and renaming.
 * The input and output of a relational algebra operation is a relation.
 * We can think of a relation as a set of tuples that have the same attributes (or schema). Relations are also called tables. 
 
-### Base Operators
+## Base Operators
 * Selection: Set of all tuples that satisfy a condition. 
     ``` math
     ```
@@ -17,7 +17,7 @@
 * Cartesian Product: Set of all tuples that are the concatenation of a tuple in the first relation and a tuple in the second relation.
 * Rename: Set of all tuples with the same attributes but different names.
 
-### Derived Operators
+## Derived Operators
 * Intersection: Set of all tuples that are in both relations. We can express an intersection with the set difference operator:
     ``` math 
     R \cap S = R - (R - S)
@@ -28,8 +28,8 @@
     ```
 * Natural Join: Set of all concatenated tuples that have the same values on the attributes that are common to both relations. A natural join is denoted as $R \bowtie S$.
 
-## Structured Query Language (SQL)
-### SELECT-FROM-WHERE
+# Structured Query Language (SQL)
+## SELECT-FROM-WHERE
 * SQL is a declarative language that allows users to query, insert, update, and delete data in a relational database.
 * The basic query format uses the `SELECT-FROM-WHERE` clause:
 ``` sql
@@ -38,8 +38,8 @@ FROM <relation>
 WHERE <condition>
 ```
 * `SELECT` acts like a projection, `FROM` acts like a cartesian product (if more than one table is specified), and `WHERE` acts like a selection.
-### Aggregation
-#### Aggregation Functions
+## Aggregation
+### Aggregation Functions
 * SQL supports aggregation functions like  `COUNT, SUM, AVG, MIN`, and `MAX`. This query returns the number of faculty in the Computer Science department.
 ``` sql
 SELECT COUNT(*)
@@ -47,7 +47,7 @@ FROM faculty
 WHERE department = 'Computer Science'
 ```
 
-#### GROUP BY
+### GROUP BY
 * We can use the `GROUP BY` clause to group the results of an aggregation function by a set of attributes. 
 * `SELECT` must have attributes must be group attributes (attrs used in `GROUP BY`) or aggregation functions.
     ``` sql
@@ -65,14 +65,14 @@ WHERE department = 'Computer Science'
     ```
     This query returns the average salary of faculty in each department that is greater than $100,000.
 
-### JOINs
+## JOINs
 
-### Subqueries
+## Subqueries
 * Subqueries are queries that are nested within another query.
 * We can use subqueries in the SELECT, FROM, and WHERE clauses.
-* Subqueries can be used whenever a relation can be specified.
+* Subqueries can be used whenever a relation is specified
 
-#### Scalar Subqueries
+### Scalar Subqueries
 * Scalar subqueries return a single value.
 * We can use scalar subqueries in the SELECT and WHERE clauses. For example, the following query returns faculty whose salary is greater than the average faculty salary.
 ``` sql
@@ -81,7 +81,7 @@ FROM faculty
 WHERE salary > (SELECT AVG(salary) FROM faculty)
 ```
 
-#### Table Subqueries
+### Table Subqueries
 * Table subqueries return a table.
 * We can use table subqueries in the FROM and WHERE clauses.
 * Comparison operator with subqueries: `IN, EXISTS, ALL, ANY`
@@ -103,4 +103,4 @@ CREATE TABLE faculty (
 DROP TABLE faculty;
 ```
 
-### Inserting, Updating, and Deleting Tuples
+## Inserting, Updating, and Deleting Tuples

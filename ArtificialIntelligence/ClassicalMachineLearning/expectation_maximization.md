@@ -1,10 +1,11 @@
-# The Expectation Maximization Algorithm
+Expectation Maximization
+==============
 
-## Latent Variable Models
+# Latent Variable Models
 * Latent variables models are probability models that have both observed $x$ and unobserved (latent) variables $z$. 
 * Adding latent variables to a model can make it more expressive, but also more difficult to fit.
 
-### Mixture Models
+## Mixture Models
 * A mixture model is an example of latent variable model where the latent variables are discrete $( z \sim \text{Cat}(\pi_1, ..., \pi_K))$.
 ``` math
 \begin{aligned}
@@ -17,7 +18,7 @@ p_\theta(x) &= \sum_{k=1}^K p_\theta(x | z=k) \underbrace{p_\theta(z=k)}_{\pi_k}
 \max_\theta \log p_\theta(x) \equiv \max_\theta \log \left( \sum_{k=1}^K \pi_k p_\theta(x | z=k) \right) 
 ```
 
-## Evidence Lower Bound
+# Evidence Lower Bound
 * Instead of maximizing the likelihood directly, we can maximize a lower bound on the likelihood. The intuition is that if we find a tight lower bound that is easier to maximize we can maximize the likelihood indirectly.  
 ``` math
 \begin{aligned}
@@ -31,10 +32,10 @@ l(\theta) &= \log( p_\theta(x) ) = E_{z\sim q} \left[ \log(p_\theta(x) \right] \
 ```
 * The quantity $F(q, \theta)$ is called the Evidence Lower Bound (ELBO), because it is a lower bound on the log-likelihood. 
 
-## Expectation Maximization Algorithm
+# The Expectation Maximization Algorithm
 * The goal of the EM algorithm is to maximize ELBO by performing iterative coordinate ascent wrt $q$ and $\theta$.
 
-### E-Step
+## E-Step
 * In the E-step, we maximize the ELBO wrt to $q$:
 ``` math
 \begin{aligned}
@@ -44,7 +45,7 @@ l(\theta) &= \log( p_\theta(x) ) = E_{z\sim q} \left[ \log(p_\theta(x) \right] \
 ```
 * KL divergence is minimized when $q(z) = p_\theta(z | x)$. Thus the goal of the E-step is find the posterior distribution of the latent variables given the observed data.
 
-### M-Step
+## M-Step
 * In the M-step, we maximize the ELBO wrt to $\theta$ given $q(z) = p_{\bar{\theta}}(z | x)$ where $\bar{\theta}$ is the current estimator of $\theta$ (we will find a new estimator in the M-step):
 ``` math
 \begin{aligned}
@@ -58,19 +59,19 @@ l(\theta) &= \log( p_\theta(x) ) = E_{z\sim q} \left[ \log(p_\theta(x) \right] \
 Q(\theta, \bar{\theta}) = E_{z \sim p_{\bar{\theta}}(\cdot | X)} \left[ \log \left( p_\theta(x, z) \right) \right]
 ```
 
-## Gaussian Mixture Models
+# Gaussian Mixture Models
 * In a Gaussian Mixtures Model, the log-likelihood is given by:
 ``` math
 p_{\theta}(x) = \sum_{k=1}^K \pi_k \mathcal{N}(x | \mu_k, \Sigma_k)
 ``` 
 * Note that $\theta = \{(\pi_k, \mu_k, \Sigma_k)\}_{k=1}^K$.
-### E-step
+## E-step
 * In the E-step, we need to find $w_k^{(i)} = p_{\bar{\theta}}(z^{(i)} = k | x^{(i)})$:
 ``` math
 w_k^{(i)} = p_{\bar{\theta}}(z^{(i)} = k | x^{(i)}) = \frac{\bar{\pi_k} \mathcal{N}(x^{(i)} | \bar{\mu_k}, \bar{\Sigma_k})}{\sum_{j=1}^K \bar{\pi_j} \mathcal{N}(x^{(i)} | \bar{\mu_j}, \bar{\Sigma_j})}
 ```
 
-### M-step
+## M-step
 * In the M-step, we need to find $\theta$ that maximizes the complete data log-likelihood:
 ``` math
 \begin{aligned}

@@ -1,6 +1,8 @@
-# Lambda Calculus
-## Syntax of Lambda Calculus
-### Components of Lambda Calculus
+Lambda Calculus 
+=================
+
+# Syntax
+## Components
 * Lambda calculus consists of
     * Variables: Variables are represented by one letter $x, y, z$
     * Abstraction: Abstraction is a function definition that binds a variable to a function body. It is represented by $\lambda x. M$
@@ -9,13 +11,13 @@
     * Bound variables are variables that are defined within a function. For example, $\lambda x.x$ has a bound variable $x$.
     * Free variables are variables that are not defined within a function. For example, $\lambda x.y$ has a free variable $y$.
 
-### Operations in Lambda Calculus
+## Operations
 * Lambda calculus has the following operations:
     * Beta reduction: Beta reduction is the process of applying a function to an argument. It is represented by $(\lambda x. M) N \rightarrow M[x := N]$
     * Alpha conversion: Alpha conversion is the process of renaming bound variables. It is represented by $\lambda x. M \rightarrow \lambda y. M[x := y]$.
 
-## Representing Data Types in Lambda Calculus
-### Church Numerals
+# Representing Data Types in Lambda Calculus
+## Church Numerals
 * Church numerals are a way to represent natural numbers in lambda calculus.
  ```math
  \begin{align*}
@@ -35,7 +37,7 @@
  f_{\text{mult}} = \lambda m. \lambda n. \lambda f. m (n f) \\
  ```
 
-### Church Booleans
+## Church Booleans
 * Church booleans are a way to represent boolean values in lambda calculus.
  ```math
  \begin{aligned}
@@ -63,7 +65,7 @@
    | $T$ | $T$ | $F$ | $T$ (and, or) |
    | $T$ | $T$ | $T$ | $T$ (or) |
 
-### Representing ADTs with Lambda Calculus
+## Representing ADTs with Lambda Calculus
 * If an ADT, has $n$ constructors, we can represent it with a abstraction with $n$ arguments.
 * A list type can be represented as:
 ```math
@@ -79,20 +81,3 @@
 \text{Just} \: a & = \lambda jn.ja \\
 \end{align*}
 ``` 
-
-## Recursion in Lambda Calculus
-### Y-Combinators
-* Suppose we are trying to implement the recursion `f n = f g n`. How does $f$ know about itself in the definition?
-```math 
-f = \lambda n . f (gn)
-```
-* Instead of calling $f$ make call to another function $h$ that's a parameter to $f$.
-```math
-f = \lambda h.\lambda n . h (gn)
-```
-* For $h$ we pass in a copy of $f$. 
-```math
-\begin{aligned}
-ff =(\lambda h.\lambda n . h (gn))(\lambda h.\lambda n . h (gn))
-\end{aligned}
-```

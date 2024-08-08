@@ -1,21 +1,25 @@
-# Interpreters 
+Intepreters
+=================
+
+# Introduction
 * Interpreters are programs that read and execute code. They are used to run code written in high-level programming languages.
 * Interpreters are different from compilers in that they execute code directly, without generating an intermediate machine code or executable file.
 
-## Components of an Interpreter
+# Components of an Interpreter
 * Main components of an interpreter: 
     * Parser: takes in text and outputs an abstract syntax tree (AST).
     * Environment: data structure to keep track of vars and vals.  
     * Evaluator: takes in an AST and executes it.
     * Top-level function (i.e. REPL)
 
-## Evaluator 
+# Evaluator 
 * The evaluator takes in an AST and executes it given the current environment.
 * Here are the types that the evaluator will work with:
     * Values: e.g. `1`, `True`
     * Expressions: e.g. `1 + 2`
 * Example of interpreters that supports integers and functions (no bools etc...)
-### Values and Expressions
+
+## Values and Expressions
 * Definition of values (we will go over closures later)
 ```haskell
 data Val = IntVal Integer
@@ -38,7 +42,7 @@ data Exp = IntExp Integer -- integer literal
 eval :: Exp -> Env -> Val
 ```
 
-### Evaluation of Literals and Operations
+## Evaluation of Literals and Operations
 * Evaluation of literals is straightforward. We just return the corresponding value.
 ```haskell
 eval (IntExp n) env = IntVal n
@@ -62,7 +66,7 @@ eval (IntOpExp op e1 e2) = let
 
 ```
 
-### Evaluation of Variables Reference and Let Expressions
+## Evaluation of Variables Reference and Let Expressions
 * To evaluate a variable reference, we look up the variable in the environment.
 ```haskell
 eval (VarExp x) env = case (lookup x env) of
@@ -76,7 +80,7 @@ eval (LetExp x e1 e2) = let
     in eval e2 (insert x v1 env)
 ```
 
-### Closures and Evaluation of Functions and Function Application
+## Closures and Evaluation of Functions and Function Application
 * In the function defintion, somes function can refer to external variables that may not be defined during application time. 
 * Closure capture the environment at the time of function definition. A function definition evaluates to a closure. 
 ```haskell

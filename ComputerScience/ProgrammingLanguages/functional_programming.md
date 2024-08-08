@@ -1,16 +1,17 @@
-# Functional Programming
+Functional Programming
+======================
 
-## What is Functional Programming?
+# What is Functional Programming?
 * Functional programming is a programming paradigm that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.
 
-## Key Concepts
+# Key Concepts
 * First class citizens can be:
     * Assigned to a variable
     * Passed as arguments to other functions
     * Returned as values from other functions
 * Pure functions have no side effects and are deterministic. 
 
-## Recursion
+# Recursion
 * Recursion is a technique where a function calls itself with "smaller" input to solve a problem. 
 * Structured similar to induction proofs where we have a base case and an inductive step, which we call the recursive case. 
     ```haskell
@@ -19,7 +20,7 @@
     factorial n = n * factorial (n - 1)
     ```
 
-### Tail Recursion
+## Tail Recursion
 * Tail recursion is a special form of recursion where the returned subexpression is either a base case or a recusive call only.
 * Tail recursion can be optimized by the compiler.
 ```haskell
@@ -29,7 +30,7 @@ factorial n = aux n 1
             aux n a = aux (n - 1) (n * a)
 ```
 
-### Continuations
+## Continuations
 * Continuations are functions that represent the future of a computation.
 * Continuation passing style (CPS) programs pass continuations as an argument to each function.
 * Programs in CPS are tail recursive and can be optimized by the compiler. 
@@ -54,10 +55,10 @@ foo n | n < 0 = foo (n+1) k
       | otherwise = foo (n - 1) (\v -> inc v k)
 ```
 
-### Higher Order Functions
+## Higher Order Functions
 * Higher order functions are functions that take other functions as arguments or return functions as results.
 
-### Map Function
+## Map Function
 * The `map` function applies a function `f` to each element of a list.
 ```haskell
 map :: (a -> b) -> [a] -> [b]
@@ -65,7 +66,7 @@ map f [] = []
 map f (x:xs) = f x : map f xs
 ```
 
-### Foldr Function
+## Foldr Function
 * The `foldr` function reduces a list to a single value by applying a function `f` to each element of the list.
 ```haskell
 foldr :: (a -> b -> b) -> b -> [a] -> b
@@ -73,14 +74,14 @@ foldr f z [] = z
 foldr f z (x:xs) = f x (foldr f z xs)
 ```
 
-## Algebraic Data Types
-### Product Types
+# Algebraic Data Types
+## Product Types
 * Product types are types that contain multiple values. Examples include tuples and records. The `Point` class is an example of a record. 
 ```haskell
 data Point = Point { x :: Int, y :: Int }
 ```
 
-### Sum Types
+## Sum Types
 * Sum types are types that can have multiple forms. The following example shows how to implement a linked list and a binary tree.
 ```haskell
 data List a = Nil 
@@ -89,24 +90,67 @@ data BTree a = Nil
             | Node a (BTree a) (BTree a)
 ```
 
-#### Maybe Type
+### Maybe Type
 * The `Maybe` type is a sum type that represents a value that may or may not exist.
     ```haskell
     data Maybe a = Nothing
                  | Just a
     ```
 
-#### Either Type
+### Either Type
 * The `Either` type is a sum type that represents a value that can be one of two types. The left side usually has error messages, and the right side usually has the results of successful computation.
     ```haskell
     data Either a b = Left a
                     | Right b
     ```
 
-## Type Classes
-* Polymorphism in Haskell is achieved through type classes.
+# Continuation Passing Style (CPS)
+* Continuation passing style (CPS) is a programming style where functions take an extra argument, the continuation, which is a function that represents the future of the computation.
+* CPS can be used to implement control flow constructs like exceptions and coroutines.
 
-## Functors, Applicatives, and Monads
-### Functors
-### Applicatives
-### Monads
+# Type Classes
+* Polymorphism in Haskell is achieved through type classes.
+* Type classes define a set of functions (similar to interfaces) that can be implemented for a type. Thus different types can have different implementations of the same function. 
+
+# Functors, Applicatives, and Monads
+## Functors
+* Functors define the `fmap` function that unwraps the container, applies a function to the value, and wraps the result back in the container.
+```haskell
+class Functor f where
+    fmap :: (a -> b) -> f a -> f b
+
+instance Functor Foo where
+    fmap f (Foo x) = Foo (f x)
+```
+
+## Applicatives
+* Applicatives define two functions:
+    * `pure` which wraps a value in a container
+    * `<*>` which applies a function within a container to a value within a container.
+```haskell
+class Functor f => Applicative f where
+    pure :: a -> f a
+    (<*>) :: f (a -> b) -> f a -> f b
+
+instance Applicative Foo where
+    pure x = Foo x
+    (Foo f) <*> (Foo x) = Foo (f x)
+```
+
+## Monads
+* Monads define two functions:
+    * `return` which wraps a value in a container. This is usually the same as `pure`.
+    * `>>=` (bind) which applies a function that returns a container to a value within a container.
+```haskell
+class Applicative m => Monad m where
+    return :: a -> m a
+    (>>=) :: m a -> (a -> m b) -> m b
+
+instance Monad Foo where
+    return x = Foo x
+    (Foo x) >>= f = f x
+```
+* Note that monads are more powerful than applicatives since `f` has control over how the computation is wrapped.
+
+## Representing State with Monads 
+
