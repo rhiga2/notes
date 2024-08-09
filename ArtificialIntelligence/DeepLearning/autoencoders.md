@@ -10,7 +10,7 @@ J(\phi, \theta) = E[ \mathcal{L}(x, g_\theta(f_\phi(x)))]
 ```
 * Normally this loss is measure by the mean squared error between the input and output.
 ```math
-J(\phi, \theta) = E[ ||x - g_\theta(f_\phi(x))||_2^2]
+J(\phi, \theta) = E[ \lVert x - g_\theta(f_\phi(x)) \rVert_2^2]
 ```
 
 ## Why Encode Information?
