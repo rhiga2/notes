@@ -10,7 +10,7 @@ J(\phi, \theta) = E[ \mathcal{L}(x, g_\theta(f_\phi(x)))]
 ```
 * Normally this loss is measure by the mean squared error between the input and output.
 ```math
-J(\phi, \theta) = E[ \lVert x - g_\theta(f_\phi(x)) \rVert_2^2]
+J(\phi, \theta) = E[ \Vert x - g_\theta(f_\phi(x)) \Vert_2^2]
 ```
 
 ## Why Encode Information?
@@ -38,17 +38,17 @@ q_\phi(z | x) = \mathcal{N}(z | \mu_\phi(x), \text{diag}(\sigma_\phi(x)))
 ```math 
 \begin{aligned}
 J(\phi, \theta) & = -F(q_\phi, \theta) \\
-    & = -E_{z \sim q_\phi(\cdot | x)} \left[ \log p_\theta(x | z) \right] + D_{KL}(q_\phi(\cdot | x) || q) 
+    & = -E_{z \sim q_\phi(\cdot | x)} \left[ \log p_\theta(x | z) \right] + D_{KL}(q_\phi(\cdot | x) \Vert q) 
 \end{aligned}      
 ```
 * Note that in practice $q$ is a standard Gaussian distribution $\mathcal{N}(0, I)$.
 * KL divergence of two Gaussian distributions is given by:
 ```math
-D_{KL}(p || q) = \frac{1}{2} \left( \text{tr}(\Sigma_q^{-1} \Sigma_p) + (\mu_q - \mu_p)^T \Sigma_q^{-1} (\mu_q - \mu_p) - d + \log \frac{\text{det}(\Sigma_q)}{\text{det}(\Sigma_p)} \right)
+D_{KL}(p \Vert q) = \frac{1}{2} \left( \text{tr}(\Sigma_q^{-1} \Sigma_p) + (\mu_q - \mu_p)^T \Sigma_q^{-1} (\mu_q - \mu_p) - d + \log \frac{\text{det}(\Sigma_q)}{\text{det}(\Sigma_p)} \right)
 ```
 * Plugging in the values for $q_\phi(z | x)$ and $q(z)$, we get:
 ```math
-D_{KL}(q_\phi|| q) = \frac{1}{2} \left( \sum_{j=1}^d (\sigma_{\phi, j}^2(x) - 1 + \mu_{\phi, j}^2(x) - \log \sigma_{\phi, j}^2(x))  \right)
+D_{KL}(q_\phi \Vert q) = \frac{1}{2} \left( \sum_{j=1}^d (\sigma_{\phi, j}^2(x) - 1 + \mu_{\phi, j}^2(x) - \log \sigma_{\phi, j}^2(x))  \right)
 ```
 
 ## The Reparameterization Trick
@@ -58,6 +58,18 @@ D_{KL}(q_\phi|| q) = \frac{1}{2} \left( \sum_{j=1}^d (\sigma_{\phi, j}^2(x) - 1 
 z = \mu_\theta(x) + \sigma_\theta(x) \odot \epsilon
 ```
 * With the reparametrization trick, we decoupled randomness from the forward pass. This allows us to backpropagate.
+
+    ```mermaid
+    flowchart LR
+        A(X) --> B(Encoder Block)
+        B --> C(mu)
+        B --> D(sigma)
+        F(z) --> E 
+        C --> E(mu + sigma * z)
+        D --> E
+        E --> G(Decoder)
+        G --> H(Y)
+    ```
 
 ## Advantages of VAEs
 * VAEs have continous latent space meaning that we can interpolate between points in the latent space. 
