@@ -9,8 +9,6 @@ Relational Algebra
 
 ## Base Operators
 * **Selection:** Set of all tuples that satisfy a condition. 
-    ``` math
-    ```
 * **Projection:** Set of all tuples with only the specified attributes. We remove duplicate tuples in a projection.
 * **Union:** Set of all tuples in either relation
 * **Set Difference:** Set of tuples in the first relation that are not in the second relation.
@@ -19,13 +17,13 @@ Relational Algebra
 
 ## Derived Operators
 * **Intersection:** Set of all tuples that are in both relations. We can express an intersection with the set difference operator:
-    ``` math 
-    R \cap S = R - (R - S)
-    ```
+``` math 
+R \cap S = R - (R - S)
+```
 * **Theta Join:** Set of all concatenated tuples that satisfy a condition. We can express a theta join with the cartesian product and selection operators:
-    ``` math
-    R \bowtie_{\theta} S = \sigma_{\theta}(R \times S)
-    ```
+``` math
+R \bowtie_{\theta} S = \sigma_{\theta}(R \times S)
+```
 * **Natural Join:** Set of all concatenated tuples that have the same values on the attributes that are common to both relations. A natural join is denoted as $R \bowtie S$.
 
 # Structured Query Language (SQL)
