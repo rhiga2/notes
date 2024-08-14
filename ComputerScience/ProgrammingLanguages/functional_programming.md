@@ -30,31 +30,6 @@ factorial n = aux n 1
             aux n a = aux (n - 1) (n * a)
 ```
 
-## Continuations
-* Continuations are functions that represent the future of a computation.
-* Continuation passing style (CPS) programs pass continuations as an argument to each function.
-* Programs in CPS are tail recursive and can be optimized by the compiler. 
-* CPS can manipulate the control flow of the program whereas regular tail recursion does not. For example, CPS can similate multitasking and exceptions. 
-* Converting functions from direct style to CPS involves passing a continuation $k$ as an argument to the function. 
-* Conversion cases:
-    1. Expressions with no function calls: apply continuation to expression.
-    2. Expressions with single, outer function call: pass the continuation to the function call.
-    3. Other expressions: create a new continuation that applies the original continuation to the result of the expression.
-* Example convert the following function to CPS:
-```haskell
-foo :: Int -> Int
-foo 0 = 0
-foo n | n < 0 = foo (n+1)
-      | otherwise = inc(foo (n - 1))
-```
-* Converted to CPS:
-```haskell
-foo :: Int -> (Int -> Int) -> Int
-foo 0 k = 0
-foo n | n < 0 = foo (n+1) k
-      | otherwise = foo (n - 1) (\v -> inc v k)
-```
-
 ## Higher Order Functions
 * Higher order functions are functions that take other functions as arguments or return functions as results.
 
@@ -90,23 +65,43 @@ data BTree a = Nil
             | Node a (BTree a) (BTree a)
 ```
 
-### Maybe Type
+### The Maybe Type
 * The `Maybe` type is a sum type that represents a value that may or may not exist.
     ```haskell
     data Maybe a = Nothing
                  | Just a
     ```
 
-### Either Type
+### The Either Type
 * The `Either` type is a sum type that represents a value that can be one of two types. The left side usually has error messages, and the right side usually has the results of successful computation.
     ```haskell
     data Either a b = Left a
                     | Right b
     ```
 
-# Continuation Passing Style (CPS)
-* Continuation passing style (CPS) is a programming style where functions take an extra argument, the continuation, which is a function that represents the future of the computation.
-* CPS can be used to implement control flow constructs like exceptions and coroutines.
+# Continuous Passing Style (CPS)
+* Continuations are functions that represent the future of a computation.
+* CPS programs pass continuations as an argument to each function. 
+
+## Conversion to CPS
+* Conversion from direct style to CPS:
+    1. Expressions with no function calls: apply continuation to expression `e -> k e`.
+    2. Expressions with single, outer function call: pass the continuation to the outer function call `f x -> f x k`. This means we have the modify the signature of the outer function call. 
+    3. Other expressions: create a new continuation (lambda) that applies the original continuation to the result of the expression `g f x -> f x (\v -> g v k)`.
+* Example convert the following function to CPS:
+```haskell
+foo :: Int -> Int
+foo 0 = 0
+foo n | n < 0 = foo (n+1)
+      | otherwise = inc(foo (n - 1))
+```
+* Converted to CPS:
+```haskell
+foo :: Int -> (Int -> Int) -> Int
+foo 0 k = 0
+foo n | n < 0 = foo (n+1) k
+      | otherwise = foo (n - 1) (\v -> inc v k)
+```
 
 # Type Classes
 * Polymorphism in Haskell is achieved through type classes.
@@ -152,5 +147,4 @@ instance Monad Foo where
 ```
 * Note that monads are more powerful than applicatives since `f` has control over how the computation is wrapped.
 
-## Representing State with Monads 
 

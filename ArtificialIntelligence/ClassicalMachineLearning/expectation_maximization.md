@@ -25,12 +25,12 @@ p_\theta(x) &= \sum_{k=1}^K p_\theta(x | z=k) \underbrace{p_\theta(z=k)}_{\pi_k}
 l(\theta) &= \log( p_\theta(x) ) = E_{z\sim q} \left[ \log(p_\theta(x) \right] \\
 	&= E_{z \sim q} \left[ \log \left( p_\theta(x) \frac{q(z)}{q(z)} \right) \right] \\
 	&= E_{z \sim q} \left[ \log \left( \frac{p_\theta(x, z)}{p_\theta(z | x)} \frac{q(z)}{q(z)} \right) \right] \\
-	&= \underbrace{E_{Z \sim q} \left[ \log \left( \frac{p_\theta(x, z)}{q(z)} \right) \right]}_{F(q, \theta)} +  \underbrace{E_{z \sim q} \left[ \log \left( \frac{q(z)}{p_\theta(z | x)} \right) \right]}_{D_{KL}(q || p_\theta(\cdot | x))} \\
-	&= F(q, \theta) + D_{KL}(q || p_\theta(\cdot | x)) \\
+	&= \underbrace{E_{Z \sim q} \left[ \log \left( \frac{p_\theta(x, z)}{q(z)} \right) \right]}_{F(q, \theta)} +  \underbrace{E_{z \sim q} \left[ \log \left( \frac{q(z)}{p_\theta(z | x)} \right) \right]}_{D_{KL}(q \Vert p_\theta(\cdot | x))} \\
+	&= F(q, \theta) + D_{KL}(q \Vert p_\theta(\cdot | x)) \\
 	& \ge F(q, \theta)
 \end{aligned}
 ```
-* The quantity $F(q, \theta)$ is called the Evidence Lower Bound (ELBO), because it is a lower bound on the log-likelihood. 
+* Since KL divergence is always positive (Jensen's inequality), the quantity $F(q, \theta)$ is a lower bound; thus the name Evidence Lower Bound (ELBO).
 
 # The Expectation Maximization Algorithm
 * The goal of the EM algorithm is to maximize ELBO by performing iterative coordinate ascent wrt $q$ and $\theta$.
@@ -39,8 +39,8 @@ l(\theta) &= \log( p_\theta(x) ) = E_{z\sim q} \left[ \log(p_\theta(x) \right] \
 * In the E-step, we maximize the ELBO wrt to $q$:
 ``` math
 \begin{aligned}
-\max_q F(q, \theta) &\equiv \max_q (l(\theta) - D_{KL}(q || p_\theta(\cdot | X))) \\	
-	&\equiv \min_q D_{KL}(q || p_\theta(\cdot | X)) \\
+\max_q F(q, \theta) &\equiv \max_q (l(\theta) - D_{KL}(q \Vert p_\theta(\cdot | X))) \\	
+	&\equiv \min_q D_{KL}(q \Vert p_\theta(\cdot | X)) \\
 \end{aligned}
 ```
 * KL divergence is minimized when $q(z) = p_\theta(z | x)$. Thus the goal of the E-step is find the posterior distribution of the latent variables given the observed data.
@@ -54,7 +54,7 @@ l(\theta) &= \log( p_\theta(x) ) = E_{z\sim q} \left[ \log(p_\theta(x) \right] \
 \end{aligned}
 ```
 
-* From the E-step, we have that $q(z) = p_\theta(z || x)$. Therefore, in the M-step, we need to find $\theta$ that maximizes the complete data log-likelihood:
+* From the E-step, we have that $q(z) = p_\theta(z \Vert x)$. Therefore, in the M-step, we need to find $\theta$ that maximizes the complete data log-likelihood:
 ``` math 
 Q(\theta, \bar{\theta}) = E_{z \sim p_{\bar{\theta}}(\cdot | X)} \left[ \log \left( p_\theta(x, z) \right) \right]
 ```

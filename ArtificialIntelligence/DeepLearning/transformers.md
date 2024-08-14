@@ -97,12 +97,9 @@ flowchart LR
     * Decoder-only transformers do not have the cross-attention layer.
 * Here are the main uses of each type of transformer: 
 
-<div class="table-wrapper" markdown="block">
-
 |Type|Common Usage|Examples|
-|:-:|:-:|:-:|
+| ------------ | ------------ | ----------- |
 |Encoder-Only|Discriminitive analysis of text such as sentiment classificaiton, entity recognition, etc... |BeRT|
 |Decoder-Only|Generative tasks such as summarization, question-answering, etc... |GPT-X|
 |Encoder-Decoder|Sequence-to-sequence tasks such as translation|Original transformer|
 
-</div>

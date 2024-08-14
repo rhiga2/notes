@@ -13,7 +13,7 @@
 ```math
 \Delta(p, q) = \sup_{A \in \mathcal{F}} |p(A) - q(A)|
 ```
-* This graphically is equvalent to the area where $p(x) > q(x)$. By symmetry, this is half the absolute area between $p(x)$ and $q(x)$. 
+* This graphically is equvalent to the area in a pmf where $p(x) > q(x)$. By symmetry, this is half the absolute area between $p(x)$ and $q(x)$. 
 ```math
 \Delta(p, q) = \frac{1}{2} \sum_{x \in X} |p(x) - q(x)| 
 ```
@@ -47,11 +47,12 @@ D_{JS}(p, q) = \frac{1}{2} D_{KL}(p || m) + \frac{1}{2} D_{KL}(q || m)
 W_k(p, q) = \inf_{\gamma \in \Pi(p, q)}( E_{(x, y) \sim \gamma} [d(x, y)^k])^{1/k}
 ```
 * $\Pi(p, q)$ is the set of all joint distributions with marginals $p$ and $q$.
+
+## Earth Mover's Distance
 * Wasserstein distance where $k=1$ is also known as the Earth Mover's distance (EMD). 
 * The intuition behind EMD is that you are trying to find the minimum work (mass * distance) needed to transform one pile of dirt to the other. 
-* $\gamma$ is how much mass is moved from $x$ to $y$.
-* $d(x, y)$ is the distance between the two points.
-* Thus we have the following equation:
+    * $\gamma$ is how much mass is moved from $x$ to $y$.
+    *  $d(x, y)$ is the distance between the two points.
 ```math
 W_1(p, q) = \inf_{\gamma \in \Pi(p, q)} \int_{X \times Y} d(x, y) \gamma(x, y) dxdy
 ```

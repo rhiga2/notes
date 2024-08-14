@@ -59,17 +59,17 @@ z = \mu_\theta(x) + \sigma_\theta(x) \odot \epsilon
 ```
 * With the reparametrization trick, we decoupled randomness from the forward pass. This allows us to backpropagate.
 
-    ```mermaid
-    flowchart LR
-        A(X) --> B(Encoder Block)
-        B --> C(mu)
-        B --> D(sigma)
-        F(z) --> E 
-        C --> E(mu + sigma * z)
-        D --> E
-        E --> G(Decoder)
-        G --> H(Y)
-    ```
+```mermaid
+flowchart LR
+    A(X) --> B(Encoder)
+    B --> C(mu)
+    B --> D(sigma)
+    F(z) --> E 
+    C --> E(mu + sigma * z)
+    D --> E
+    E --> G(Decoder)
+    G --> H(Y)
+```
 
 ## Advantages of VAEs
 * VAEs have continous latent space meaning that we can interpolate between points in the latent space. 

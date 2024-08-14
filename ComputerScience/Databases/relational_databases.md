@@ -8,25 +8,25 @@ Relational Algebra
 * We can think of a relation as a set of tuples that have the same attributes (or schema). Relations are also called tables. 
 
 ## Base Operators
-* Selection: Set of all tuples that satisfy a condition. 
+* **Selection:** Set of all tuples that satisfy a condition. 
     ``` math
     ```
-* Projection: Set of all tuples with only the specified attributes. We remove duplicate tuples in a projection.
-* Union: Set of all tuples in either relation
-* Set Difference: Set of tuples in the first relation that are not in the second relation.
-* Cartesian Product: Set of all tuples that are the concatenation of a tuple in the first relation and a tuple in the second relation.
-* Rename: Set of all tuples with the same attributes but different names.
+* **Projection:** Set of all tuples with only the specified attributes. We remove duplicate tuples in a projection.
+* **Union:** Set of all tuples in either relation
+* **Set Difference:** Set of tuples in the first relation that are not in the second relation.
+* **Cartesian Product:** Set of all tuples that are the concatenation of a tuple in the first relation and a tuple in the second relation.
+* **Rename:** Set of all tuples with the same attributes but different names.
 
 ## Derived Operators
-* Intersection: Set of all tuples that are in both relations. We can express an intersection with the set difference operator:
+* **Intersection:** Set of all tuples that are in both relations. We can express an intersection with the set difference operator:
     ``` math 
     R \cap S = R - (R - S)
     ```
-* Theta Join: Set of all concatenated tuples that satisfy a condition. We can express a theta join with the cartesian product and selection operators:
+* **Theta Join:** Set of all concatenated tuples that satisfy a condition. We can express a theta join with the cartesian product and selection operators:
     ``` math
     R \bowtie_{\theta} S = \sigma_{\theta}(R \times S)
     ```
-* Natural Join: Set of all concatenated tuples that have the same values on the attributes that are common to both relations. A natural join is denoted as $R \bowtie S$.
+* **Natural Join:** Set of all concatenated tuples that have the same values on the attributes that are common to both relations. A natural join is denoted as $R \bowtie S$.
 
 # Structured Query Language (SQL)
 ## SELECT-FROM-WHERE
@@ -38,7 +38,7 @@ FROM <relation>
 WHERE <condition>
 ```
 * `SELECT` acts like a projection, `FROM` acts like a cartesian product (if more than one table is specified), and `WHERE` acts like a selection.
-## Aggregation
+## Aggregations and Grouping
 ### Aggregation Functions
 * SQL supports aggregation functions like  `COUNT, SUM, AVG, MIN`, and `MAX`. This query returns the number of faculty in the Computer Science department.
 ``` sql
@@ -104,3 +104,21 @@ DROP TABLE faculty;
 ```
 
 ## Inserting, Updating, and Deleting Tuples
+* We can insert tuples into a table with the `INSERT INTO` statement.
+``` sql
+INSERT INTO faculty (name, department, salary)
+VALUES ('Alice', 'Computer Science', 120000);
+```
+
+* We can update tuples in a table with the `UPDATE` statement and user the `WHERE` clause to specify the tuples to update.
+``` sql
+UPDATE faculty 
+SET salary = 130000
+WHERE name = 'Alice';
+```
+
+* We can delete tuples from a table with the `DELETE FROM` statement and use the `WHERE` clause to specify the tuples to delete.
+``` sql
+DELETE FROM faculty
+WHERE name = 'Alice';
+```

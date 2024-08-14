@@ -1,3 +1,6 @@
+Dynamic Programming
+==================
+
 # Introduction
 ## Elements of Dynamic Programming
 1. Define how to solve a problem recursively, meaning that you want to break up a larger problem in smaller subproblems.
