@@ -3,14 +3,21 @@ Autoencoders and GANs
 # Autoencoders
 * An autoencoder is a neural network that learns to replicate the input as the output. 
 * Autoencoders consist of an encoder and a decoder. The encoder $f_\phi$ maps the input to a latent space representation, and the decoder $g_\theta$ maps the latent space representation to the output.
-* We want the latent space to be a lower dimension $d$ than the input space dimension $m$. This assumes that the input data has some underlying structure that can be captured in a lower dimension.
+* We want the latent space to be a lower dimension than the input space dimension. This assumes that the input data has some underlying structure that can be captured in a lower dimension.
 * The loss function of the autoencoder (also known as reconstruction loss) measures how well the output resembles the input. 
 ```math
 J(\phi, \theta) = E[ \mathcal{L}(x, g_\theta(f_\phi(x)))]
 ```
-* Normally this loss is measure by the mean squared error between the input and output.
+* Normally this loss is measure by the mean squared error between the input and output. Common choice is the $L_2$ norm:
 ```math
 J(\phi, \theta) = E[ \Vert x - g_\theta(f_\phi(x)) \Vert_2^2]
+```
+```mermaid
+flowchart LR
+    A(X) --> B(Encoder)
+    B --> C(Z)
+    C --> D(Decoder)
+    D --> E(Y)
 ```
 
 ## Why Encode Information?
@@ -64,8 +71,8 @@ flowchart LR
     A(X) --> B(Encoder)
     B --> C(mu)
     B --> D(sigma)
-    F(z) --> E 
-    C --> E(mu + sigma * z)
+    F(epsilon) --> E 
+    C --> E(Z = mu + sigma * epsilon)
     D --> E
     E --> G(Decoder)
     G --> H(Y)
@@ -84,6 +91,20 @@ flowchart LR
 \begin{aligned}
 V(\phi, \theta) & = E_{x \sim p_{\text{data}}} \left[ \log f_\phi(x) \right] + E_{z \sim p(z)} \left[ \log (1 - f_\phi(g_\theta(z))) \right] \\
 \end{aligned}
+```
+* Usually $p(z)$ is the standard normal distribution.
+* The discriminator is trying to maximize $V$ wrt $\phi$, while the generator is trying to minimize $V$ wrt $\theta$.
+```math
+\max_\phi \min_\theta V(\phi, \theta)
+```
+```mermaid
+flowchart LR
+    A(Z) --> B(Generator)
+    B --> C(Fake X)
+    C --> E(Discriminator)
+    D(Real X) --> E
+    E --> F(Fake)
+    E --> G(Real)
 ```
 
 
