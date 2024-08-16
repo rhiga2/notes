@@ -55,3 +55,8 @@ def largest_consecutive_sum(A):
             global_max = local_max
     return global_max
 ```
+
+# Relationship to DFS
+* Dynamic programming depends on a recursive structure of subproblems. 
+* We can create a directed acyclic graph where each node represents a subproblem and edges represent dependencies. For example, `A -> B` indicates subproblem `A` dependengs on subproblem `B`.
+* DP solves subproblems before going to problems that depend on them. Thus we need to solve problems in a reverse topological order.

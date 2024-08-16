@@ -1,4 +1,4 @@
-Relational Algebra
+Relational Databases
 ==============
 # Relational Algebra 
 * Algebras consist of operands and operators. 

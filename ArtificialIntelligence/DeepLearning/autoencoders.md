@@ -15,9 +15,8 @@ J(\phi, \theta) = E[ \Vert x - g_\theta(f_\phi(x)) \Vert_2^2]
 ```mermaid
 flowchart LR
     A(X) --> B(Encoder)
-    B --> C(Z)
-    C --> D(Decoder)
-    D --> E(Y)
+    B --> |Z| C(Decoder)
+    C --> D(Y)
 ```
 
 ## Why Encode Information?
@@ -69,12 +68,10 @@ z = \mu_\theta(x) + \sigma_\theta(x) \odot \epsilon
 ```mermaid
 flowchart LR
     A(X) --> B(Encoder)
-    B --> C(mu)
-    B --> D(sigma)
-    F(epsilon) --> E 
-    C --> E(Z = mu + sigma * epsilon)
-    D --> E
-    E --> G(Decoder)
+    B --> |mu| C(reparametrization)
+    B --> |sigma| C
+    D(epsilon) --> C 
+    C -->|Z| G(Decoder)
     G --> H(Y)
 ```
 
@@ -100,11 +97,9 @@ V(\phi, \theta) & = E_{x \sim p_{\text{data}}} \left[ \log f_\phi(x) \right] + E
 ```mermaid
 flowchart LR
     A(Z) --> B(Generator)
-    B --> C(Fake X)
-    C --> E(Discriminator)
-    D(Real X) --> E
-    E --> F(Fake)
-    E --> G(Real)
+    B --> |Fake X| C(Discriminator)
+    D(X) --> C
+    C --> E(Y)
 ```
 
 
