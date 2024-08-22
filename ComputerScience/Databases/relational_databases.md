@@ -60,7 +60,7 @@ SELECT department, AVG(salary)
 FROM faculty
 GROUP BY department
 HAVING AVG(salary) > 100000
-    ```
+```
 * This query returns the average salary of faculty in each department that is greater than $100,000.
 
 ## JOINs
