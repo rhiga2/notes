@@ -63,12 +63,12 @@ D_{KL}(q_\phi \Vert q) = \frac{1}{2} \left( \sum_{j=1}^d (\sigma_{\phi, j}^2(x) 
 ```math
 z = \mu_\theta(x) + \sigma_\theta(x) \odot \epsilon
 ```
-* With the reparametrization trick, we decoupled randomness from the forward pass. This allows us to backpropagate.
+* With the reparameterization trick, we decoupled randomness from the forward pass. This allows us to backpropagate.
 
 ```mermaid
 flowchart LR
     A(X) --> B(Encoder)
-    B --> |mu| C(reparametrization)
+    B --> |mu| C(reparameterization)
     B --> |sigma| C
     D(epsilon) --> C 
     C -->|Z| G(Decoder)

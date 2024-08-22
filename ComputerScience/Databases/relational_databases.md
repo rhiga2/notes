@@ -48,20 +48,20 @@ WHERE department = 'Computer Science'
 ### GROUP BY
 * We can use the `GROUP BY` clause to group the results of an aggregation function by a set of attributes. 
 * `SELECT` must have attributes must be group attributes (attrs used in `GROUP BY`) or aggregation functions.
-    ``` sql
-    SELECT department, AVG(salary)
-    FROM faculty
-    GROUP BY department
-    ```
-    This query returns the average salary of faculty in each department.
+``` sql
+SELECT department, AVG(salary)
+FROM faculty
+GROUP BY department
+```
+* This query returns the average salary of faculty in each department.
 * `HAVING` filters groups based on a condition.
-    ``` sql
-    SELECT department, AVG(salary)
-    FROM faculty
-    GROUP BY department
-    HAVING AVG(salary) > 100000
+``` sql
+SELECT department, AVG(salary)
+FROM faculty
+GROUP BY department
+HAVING AVG(salary) > 100000
     ```
-    This query returns the average salary of faculty in each department that is greater than $100,000.
+* This query returns the average salary of faculty in each department that is greater than $100,000.
 
 ## JOINs
 
