@@ -4,6 +4,8 @@
 ### Kolmogorov's Axioms
 ### Probabilistic Properties 
 
+## Counting and Combinatorics
+
 ## Discrete Random Variables
 
 ## Continuous Random Variables
