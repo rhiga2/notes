@@ -5,3 +5,11 @@
   * i.e. slicing and indexing with `[]` call `__getitem__`
 * Avoid calling special methods directly!
 
+## Chapter 2: An Array of Sequences
+### Container API
+* Indexing
+* Len
+* Contains
+### Built-In Sequences
+* Container v flat sequence   
+* 
