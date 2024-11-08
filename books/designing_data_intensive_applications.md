@@ -12,4 +12,14 @@
   * Document DBs
   * Graph DBs
 
-# Chapter 3
+## Chapter 3: Storage and Retrieval
+* Goal is to build a key-value store with set and get methods
+### Simple append-only
+* Append only file
+* Index: additional data structure to retrieve where data is stored
+### Hash Indexes
+* Hash table: key points to offset in file
+* Avoid running out of space with compaction
+  * Deletion: Update value with tombstone
+* Checksum 
+
