@@ -15,11 +15,26 @@
 ## Chapter 3: Storage and Retrieval
 * Goal is to build a key-value store with set and get methods
 ### Simple append-only
-* Append only file
+* Append only log
+  * Append only writes faster than in-place random access writes 
 * Index: additional data structure to retrieve where data is stored
 ### Hash Indexes
-* Hash table: key points to offset in file
-* Avoid running out of space with compaction
+* Hash map: key points to offset in file, simplest index
+* Avoid running out of space by compacting segments
+  * Each compacted segment has in-memory hash map 
   * Deletion: Update value with tombstone
-* Checksum 
-
+  * Crash recovery: store hash maps to disk. Don't have to remake hash maps with compaction
+  * Partially-written records: checksum
+### SSTables and LSM-Trees
+* Keys in segments must be sorted
+  * Merge (as in the merge in mergsort) on compaction of segments
+  * No longer have to keep all keys in hash map, can be sparse
+  * Reduce I/O bandwidth (why?)
+* Instead of append-only log keep AVL / red-black tree in mem (memtable)
+* Crash recovery: keep append-only log on disk so memtable can be restored
+* Perf optimizations: bloomfilters
+### B-Trees
+* Write-ahead log (WAL): append-only file on disk to recover B-Tree state on crash
+### B-Trees v LSM Trees
+* B-Tree faster on reads, LSM Trees faster on writes
+* 
