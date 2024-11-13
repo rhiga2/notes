@@ -1,3 +1,4 @@
+# Designing Data Intensive Applications
 ## Chapter 1: Reliability, Scalability, Maintainability
 ### Reliability
 ### Scalability 
@@ -37,4 +38,16 @@
 * Write-ahead log (WAL): append-only file on disk to recover B-Tree state on crash
 ### B-Trees v LSM Trees
 * B-Tree faster on reads, LSM Trees faster on writes
-* 
+* Write amplificiation: one write to db must write multiple times to disk. Higher write amplification means less throughput.
+* LSMs have less write amplification and better throughput.
+* Background compaction in LSMs can interfere with read/write performance.
+### Secondary Keys
+* Unlike primary keys, secondary keys may not be unique. 
+### Storing in Index
+* Clustered index: row stored directly in index as opposed to pointer to data
+* Heap file: where row is stored if pointer is stored in index
+* Covered index: store some columns in index but not entire row
+### Multi-column indices
+
+# Chapter 4: 
+
