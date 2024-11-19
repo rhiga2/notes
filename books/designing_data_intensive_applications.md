@@ -47,7 +47,25 @@
 * Clustered index: row stored directly in index as opposed to pointer to data
 * Heap file: where row is stored if pointer is stored in index
 * Covered index: store some columns in index but not entire row
-### Multi-column indices
-
-# Chapter 4: 
+### Multi-Column Index
+* Concatenated Index
+ * Index such as lastname-firstname cannot find people by first name.  
+* Multi-dimensional indexing (R-Trees, etc...)
+### Full-Text Search and Fuzzy Indexing
+* Edit Distance Automaton: Automaton to search for words within a certain distance
+### In-Memory Databases
+* Faster, but often less durable. More expensive to store in memory per byte than with disk.
+### Transaction Processing v Analytics 
+* Online transaction processing (OLTP): Reads, writes, and processes a small number of records at a time. Often times random-access.
+* Online analytics processing (OLAP): Aggregation and analysis on large number of records at a time.
+ * Data warehouse: Databases optimized for OLAP
+ * Extract-load-transform: Getting data from one or many transaction DBs into data warehouse
+* Star vs Snowflake Schema
+### Column-Oriented Storage
+* Row-oriented: Values in the same row are located next to each other in storage. Ideal for OLTP
+* Column-oriented: Values in the same column are located close in storage. Ideal for OLAP that accesses few columns
+ * Column compression: bitmap encoding of columns
+* Sort-order: We need to specify primary, secondary, tertiary columns to determine sort. Cannot sort rows independently if we want to reconstruct the rows. Can lead to better compression in primary sorted column. 
+  
+## Chapter 4: 
 
