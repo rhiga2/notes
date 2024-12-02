@@ -65,7 +65,11 @@
 * Row-oriented: Values in the same row are located next to each other in storage. Ideal for OLTP
 * Column-oriented: Values in the same column are located close in storage. Ideal for OLAP that accesses few columns
  * Column compression: bitmap encoding of columns
-* Sort-order: We need to specify primary, secondary, tertiary columns to determine sort. Cannot sort rows independently if we want to reconstruct the rows. Can lead to better compression in primary sorted column. 
-  
-## Chapter 4: 
+* Sort-order: We need to specify primary, secondary, tertiary columns to determine sort. Cannot sort rows independently if we want to reconstruct the rows. Can lead to better compression in primary sorted column.
+### Aggregations on Data
+* Virtual view v materialized view: Materialized view actually stores copy of aggregations on to disk. Virtual view just expands the query.
+* Materialized views don't make sense in write-heavy OLTP as write also needs to update the view.
+* Data cubes
+
+## Chapter 4: Encoding and Evolution
 
