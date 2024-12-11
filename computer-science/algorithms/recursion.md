@@ -18,7 +18,6 @@ T_n &= T_{n/2} + c \\
 * Thus runtime is $O(\log n)$
 
 ## MergeSort
-* Sort an array
 1. Split array down the middle.
 2. Recursively sort left side
 3. Recursively sort right side
@@ -33,6 +32,15 @@ T_n &= 2*T_{n/2} + cn \\
 \end{aligned}
 ```
 * Thus runtime is $O(n\log n)$
+
+## QuickSort
+1. Choose a pivot in the array. This can be any value.
+2. Partition the array so that values lt pivot are left of it and values gt pivot are right of it.
+3. Recursively partition values left of pivot
+4. Recurisvely partition values right of pivot
+* Worst case: we choose the min or max val to be pivot.
+* Best case: we choose median to be pivot.
+* Assuming best case our runtime is same as mergesort $O(n \log n)$ 
 
 ## Master's Theorem
 * Given a recursive runtime of the form. We can generalize the runtime. 
