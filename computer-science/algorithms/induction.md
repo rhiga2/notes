@@ -16,5 +16,5 @@
 ```
 
 ## Strong Induction
-* Similar to weak case, but the inductive step assumes P(m) for all natural numbers $m < k$ 
+* Similar to weak case, but the inductive step assumes P(m) for all natural numbers $m < k$. 
 
