@@ -26,4 +26,15 @@ R(\tau) &= r(s_1, a_1) + \gamma r(s_2, a_2) + ... + \gamma^{T - 1} r(s_T, a_T)  
 ```math
 Q^{\pi}(s, a) = E_{\tau_t \sim p_\pi } \left[ R(\tau_t) | s_t=s, a_t=a \right]
 ```
-* The value function tells us what the future payoff we can expect given we are in state $s$. 
+* The value function tells us what the future payoff we can expect given we are in state $s$.
+```math
+V^{\pi}(s) = E_{\tau_t \sim p_\pi } \left[ R(\tau_t) | s_t=s \right]
+```
+* By the tower rule, the value function is the expected Q-function over actions in state $s$.
+```math
+V^{\pi}(s) = E_{a \sim p_{\pi} } \left[ Q(s, a) \right]
+```
+* The advantage refers to how much better off (or worse off) we are by taking action $a$ compared to average payoff from state $s$.
+```math
+A^{\pi}(s, a) = Q^{\pi}(s, a) - V^{\pi}(s)
+```
