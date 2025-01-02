@@ -3,6 +3,10 @@
 ## Fully-Connected NNs
 ## Training Practices
 ## Convolutional NNs
+### 1D Convolution
+
+### 2D Convolution
+
 ## Recurrent NNs
 ## Transformers
 ### Scaled Dot Product Attention
@@ -26,7 +30,7 @@ Q = W_Q X
 ### Multi-Headed Attention 
 
 ### Masking (or Causal) Attention
-* Given a sequence keys and values. We sometimes don't want a later key-value to be retrieved by an earlier query.
+* Given a sequence keys and values. We sometimes don't want a later key-value to be retrieved by query that comes before it.
 * We want to mask out scores before normalization with softmax. 
 ```math
 S_{ij} = \begin{cases}
