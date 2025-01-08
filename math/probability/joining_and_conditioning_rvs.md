@@ -1,4 +1,7 @@
 # Multiple Random Variables
+## Joint Distributions
+## Conditional Distributions
+
 ## Conditional Expectations
 * The quantity $E[X|Y]$ is a random variable in $Y$.
 * Law of Total Expectation
