@@ -4,9 +4,6 @@
 * Infinite Series: sum of infinite sequence $\sum_{i=1}^{\infty} x_i$
 * Partial Sum: sum up to $n$ values $S_n = \sum_{i=1}^n x_i$
 
-## Convergence of Infinite Series
-* Necessary condition: sequence must converge to $0$
-
 ## Geometric Series
 ```math
 S = 1 + r + r^2 + ... = \sum_{i=1}^{\infty} r^{i-1}
@@ -28,6 +25,7 @@ S = \frac{1}{1-r}
 ```
 
 ## Convergence of Sequences and Series
+* Necessary condition: sequence must converge to $0$. 
 
 ## Power Series
 
