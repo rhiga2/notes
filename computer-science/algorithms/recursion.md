@@ -1,4 +1,5 @@
-# Recursion
+Recurive Algorithms
+===================
 ## Binary Search
 * Given a sorted array search if a value exists in the array.
 1. If array is empty, we are done as there is nothing to search. 
