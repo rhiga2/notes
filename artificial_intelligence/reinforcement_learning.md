@@ -16,7 +16,7 @@ R(\tau) &= r(s_1, a_1) + \gamma r(s_2, a_2) + ... + \gamma^{T - 1} r(s_T, a_T)  
 \end{aligned}
 ```
 * Given MDP, we want to find a policy $\pi$ indicately which actions to taken given current state $p(a | s)$.
-* Our objective is to maximize the expected payoff over a trajectory sampled from our policy.
+* Our objective is to maximize the expected payoff (discounted future rewards) over a trajectory sampled from our policy.
 ```math
 \max_\pi E_{\tau \sim p_{\pi}} \left[ R(\tau) \right] \equiv \max_\pi \sum_{t=1}^T E_{(s_t, a_t) \sim p_{\pi}} \left[ r_t \right] 
 ```
