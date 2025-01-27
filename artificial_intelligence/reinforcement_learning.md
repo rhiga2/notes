@@ -1,5 +1,6 @@
-# Intro to Reinforcement Learning
-## Markov Decision Processes (MDP)
+Reinforcement Learning
+======================
+# Markov Decision Processes (MDP)
 * MDPs consist of $(S, A, T, r)$ (assuming full observability).
   * $S$ = state space
   * $A$ = action space
@@ -7,7 +8,7 @@
   * $r$ = rewards function given state and action $r(s, a)$
 * Usually we don't know transition function completely.
 
-## Goal of Reinforcement Learning
+# Goal of Reinforcement Learning
 * A trajectory is a sequence of states and actions taken $\tau = \[(s_1, a_1), ..., (s_T, a_T)\]$. We want to discount rewards (payoff) over this trajectory.
 ```math
 \begin{aligned}
@@ -21,7 +22,7 @@ R(\tau) &= r(s_1, a_1) + \gamma r(s_2, a_2) + ... + \gamma^{T - 1} r(s_T, a_T)  
 \max_\pi E_{\tau \sim p_{\pi}} \left[ R(\tau) \right] \equiv \max_\pi \sum_{t=1}^T E_{(s_t, a_t) \sim p_{\pi}} \left[ r_t \right] 
 ```
 
-## Quality, Value, and Advantage Functions
+# Quality, Value, and Advantage Functions
 * Quality function tells us what is the future payoff we can expect given we take action $a$ from state $s$. We denote the future trajectory as $\tau_t = [(s_t, a_t), (s_{t+1}, a_{t+1}), ..., (s_T, a_T)]$
 ```math
 Q^{\pi}(s, a) = E_{\tau_t \sim p_\pi } \left[ R(\tau_t) | s_t=s, a_t=a \right]
