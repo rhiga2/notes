@@ -5,6 +5,11 @@ Deep Learning
 # Convolutional NNs
 
 # Recurrent NNs
+* RNNs are networks with skip connections. A skip connection on block $g$ adds $g$'s input with $g$'s output.
+```math
+y = g(x) + x
+```
+
 # Transformers
 ## Scaled Dot Product Attention
 * Inputs are three tensors key $K$, query $Q$, and value $V$. Each key and query vector has dimension $d$
@@ -25,6 +30,9 @@ Q = W_Q X
 ```
 
 ## Multi-Headed Attention 
+* Each attention head takes input $X$ and produces triplet $(K, Q, V)$. Thus each head has it's own set of three weight matrices. 
+* Intuition is that each attention head focuses on different aspects of the input.
+
 ## Masked Attention
 * Given a sequence keys and values. We sometimes don't want a later key-value to be retrieved by query.
 * We want to mask out scores before normalization with softmax. 
