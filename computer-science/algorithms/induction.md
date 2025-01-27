@@ -15,6 +15,3 @@
 (1 + 2 + 4 + ... + 2^{k-1}) + 2^k = (2^{k} - 1) + 2^k = 2^{k+1} - 1
 ```
 
-## Strong Induction
-* Similar to weak case, but the inductive step assumes P(m) for all natural numbers $m < k$. 
-
