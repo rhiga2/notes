@@ -39,10 +39,16 @@ T_n &= 2*T_{n/2} + cn \\
 * Best case: we choose median to be pivot.
 * Assuming best case our runtime is same as mergesort $O(n \log n)$. 
 
-# Master's Theorem
+## Master's Theorem
 * Given a recursive runtime of the form. We can generalize the runtime. 
 ```math
 T_n = b T_{n/b} + g(n)
 ```
 * $b$ is the branching factor, $g(n)$ is how much work we do at every branch.
+
+# Trees Algorithms
+
+# Graph Algorithms
+
+# Dynamic Programming
 
