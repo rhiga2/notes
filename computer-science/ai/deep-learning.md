@@ -2,6 +2,15 @@ Deep Learning
 =============
 # Computational Graphs
 # Fully-Connected NNs
+* FC networks have an affine (linear) layer followed by a non-linear activation function.
+```math
+\begin{gathered}
+z = w^T x + b \\
+y = g(z)
+\end{gathered}
+```
+* Activation $g$ must be non-linear since we often compose layers. Composition of linear layers can only express linear functions.  
+
 # Convolutional NNs
 
 # Recurrent NNs
