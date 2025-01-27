@@ -1,4 +1,4 @@
-# Induction
+# Discreet Math
 ## Weak Induction
 * Method to prove proposition $P(n)$ is true for all natural numbers $0, 1, 2, ..., n$
 * We split induction into two steps:
