@@ -13,5 +13,35 @@ Cloud Applications
   * You only have to manage application and data, but you have less control over env.   
 * Software as a Service (SAAS): IAAS and PAAS are solutions for application developers. SAAS pertrains to end users.
    * Software that does not need to be installed or updated on local computer. Works in browser   
+## Common Cloud Service Offerings
+* Access Management
+* Compute
+* Storage
+* Networking
+* Databases
+* Monitoring
 
+# Access Management
+## Terminology
+* Shared Responsibility Model: 
+* Principal:
+* Principle of Least Privilege: Give minimal access to principal to do their job and nothing more. 
+* Authentication: Who are you?
+  * Ways to authenticate:
+    * Log in with username and password
+    * API access keys
+    * Federation: identity is verfied by a third-party
+* Authorization: What can you do?
 
+## Identity and Access Management
+* Account
+* Organization
+* Identities
+ * Users
+ * User Groups
+ * Roles 
+* Policies
+
+# Networking
+## IP Addresses and CIDR
+## Virtual Private Clouds and Subnets
