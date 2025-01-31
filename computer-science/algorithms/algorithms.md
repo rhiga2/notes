@@ -1,4 +1,4 @@
-Classic Algorithms
+Algorithms
 ===================
 # Divide and Conquer
 ## Binary Search
