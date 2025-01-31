@@ -1,9 +1,12 @@
 Large Language Models
 =====================
 
-# Non-Functional Improvements
+
+# Non-Functional Training/Inference Performance
 ## Flash Attention
 ## LoRAs
 ## Speculative Decoding
 
-# 
+# Prompting Techniques
+
+# LLM App Paradigms 
