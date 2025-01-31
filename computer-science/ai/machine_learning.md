@@ -1,4 +1,4 @@
-Classical Machine Learning
+Machine Learning
 ================
 # Linear Regression
 ## Supervised Learning
