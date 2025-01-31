@@ -34,6 +34,19 @@ Cloud Applications
 * Authorization: What can you do?
 
 ## Identity and Access Management
+* Organization
+* Account
+* Identities
+  * Users: person or app with long-term credendtials. Not recommended for apps or code to have long-tern creds
+  * User groups: multiple users that share a set of permissions. Users can belong to multiple user groups
+  * Roles:
+* Policies: Permissions given to a user or resource
+  * Identity-based: permissions (allowed and denied actions) attacked to users, user groups, or roles.
+  * Resource-based: permissions attached to resources (i.e. make S3 bucket publicly accessible)
+  * 
+
+
+## Identity and Access Management
 * Account
 * Organization
 * Identities
