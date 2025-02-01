@@ -45,16 +45,6 @@ Cloud Applications
   * Resource-based: permissions attached to resources (i.e. make S3 bucket publicly accessible)
   * 
 
-
-## Identity and Access Management
-* Account
-* Organization
-* Identities
- * Users
- * User Groups
- * Roles 
-* Policies
-
 # Networking
 ## IP Addresses and CIDR
 ## Virtual Private Clouds and Subnets
