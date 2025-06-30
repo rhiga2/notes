@@ -19,5 +19,14 @@
   * Single thread execution
   * Two-phase locking
   * Optimistic concurrency control techniques
-* Single threaded execution cannot be interactive (transaction cannot be multiple requests). Usually transactions is a stored procedure.
-*   
+* Single threaded execution: Everything occurs in a single thread
+  * Cannot be interactive (transaction cannot be multiple HTTP requests). Usually transactions is a stored procedure.
+  * May have parallel execution as long as transactions touch different single partitions
+  * Cross-partition coordination is slow
+* Two-phase locking: writers can block readers and readers can block writers.
+  * In snapshot isolation, only writers block writers
+  * Shared lock can be acquired by many, but exclusive lock must wait for all shared locks to be released. No shared lock can be acquired if exclusive lock is active.
+  * Exclusive aqcuired during transactions must be held until the end. 
+  * Can be very slow, easy to overload 2PL with slow transactions
+  * Risk of deadlocking. If deadlock is detected, then one of the transactions will be aborted.
+  * Predicate lock: locks that are not defined on an object but on a condition (i.e. meeting room + time range)  
