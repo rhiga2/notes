@@ -1,4 +1,17 @@
 # Transactions
+## Race Conditions
+* Dirty Read: One client sees an uncommited write.
+* Dirty Write
+* Read Skew
+* Lost Updates
+* Write Skew: Concurrent writes lead to invariant being violated.
+* Phantom Reads: Write in one query changes the read results in another query.
+* 
+
+## Snapshot Isolation
+* Transactions do not see partial effects of concurrent transactions.
+* 
+
 ## Write-Write Conflicts
 * Lost writes: concurrent writes clobber one another
 * Atomic write: object is locked during read-modify-write cycle of an update
@@ -29,4 +42,18 @@
   * Exclusive aqcuired during transactions must be held until the end. 
   * Can be very slow, easy to overload 2PL with slow transactions
   * Risk of deadlocking. If deadlock is detected, then one of the transactions will be aborted.
-  * Predicate lock: locks that are not defined on an object but on a condition (i.e. meeting room + time range)  
+  * Predicate lock: locks that are not defined on an object but on a condition (i.e. meeting room + time range)
+  * Index-range lock: group multiple things to share lock.
+* Serializable Snapshot Isolation (SSI)
+  * Pessimistic concurrency control tries to prevent serializability violations, where as optimistic concurrency control lets transactions run concurrent and aborts transactions that violate seriazability.
+  * Transactions usually read value first then decides to take action. The read value before taking action is called a premise.
+  * SSI runs on snapshot isolation but extends it to include serializability. 
+  * Two cases:
+    * Stale snapshot: Transaction A modifies a value from 0 to 1 but does not commit immediately. Transaction B reads 0 in its consistent snapshot and increments it. Before B commits, A commits its update. At B’s commit, SSI detects a conflict (because B’s read version was overwritten by A), and may abort B to preserve serializability.
+    * Snapshot before stale before commit: SSI uses a conflict-tracking mechanism (like a tripwire) to detect if concurrent transactions’ snapshots create a dangerous conflict pattern. If so, the system aborts one transaction — usually letting the first committer win — to maintain serializability.
+  * Performance varies significantly by rate of aborts, thus it helps to keep transactions small.
+ 
+# Problems with Distributed Systems
+## Faults and Partial Failures
+
+ 
