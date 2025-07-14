@@ -1,3 +1,5 @@
+Distributed Systems 
+======================
 # Transactions
 ## Race Conditions
 * Dirty Read: One client sees an uncommited write.
