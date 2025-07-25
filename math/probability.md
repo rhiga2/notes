@@ -38,7 +38,6 @@ Probability
   * For continuous random variables, $P(x) = \int_{\infty}^x p(u) du$. Note that by the fundamental theorem of calculus, the density function is the derivative of the CDF.
   * CDF is monotonically non-decreasing since it's a cumulative function.
   * CDF goes from $0$ to $1$.
-* We can also specify joint distributions between random variables $p(x, y) = P(X = x, Y = y)$
 
 # Joint and Conditional Distributions
 ## Joint Distributions
@@ -57,11 +56,13 @@ p(x | y) = \frac{p(x, y)}{p(y)}
 * Product rule (aka chain rule) is just a algebraic manipulation of the definition $p(x, y) = p(x | y) p(y)$
 
 ## Bayes Rule
-* In Bayesian interpretation, we mentioned that our belief about an outcome or random variable can be updated with evidence. The rule for updating is called Bayes Rule, which is given 
-we have prior belief about  how likely each value of $X$ will occur given by $p(x)$.  
+* In Bayesian interpretation, we mentioned that our belief about an outcome or random variable can be updated with evidence. The rule for updating is called Bayes Rule, which is a manipulation of the definition of conditional probability.
 ```math
-p(x | y) = \frac{p(x, y)}{p(y)}
+p(y | x) = \frac{p(x|y) p(x)}{p(y)}
 ```
+* Our initial belief before evidence (called prior) denoted as $p(y)$.
+* After receiving evidence $x$, we update pur belief (called posterior) denoted as as $p(y | x)$.   
+
 
 
 
