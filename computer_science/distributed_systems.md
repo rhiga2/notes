@@ -110,7 +110,35 @@ Distributed Systems
 ## Causality and Sequence Number Ordering
 
 
-##
+# Batch Processing
+## MapReduce
+* Join algorithms
+	* Sort-merge joins
+ 	* Broadcast hash joins
+  * Partitioned hash joins
+## Beyond Mapreduce
+* Problems with mapreduce
+	* Lack flexbility since not every data processing job needs to map-sort-reduce in that order. 
+ 	* Not optimized to store intermediate state (aka materialization). Intermediate state between mapreduce jobs is published to HDFS, which can be overkill.
+  * Cannot implement iterative "repeat until done" algorithms.
+  * Lacks interactive (REPL) data exploration capabilities.
+  * Creating mapreduce jobs is often done through imperative programming. 
+* Data flow engines (i.e. Spark)
+	* Often keep intermediate computational results in memory avoiding frequent disk writes like in mapreduce.  
+	* Operators are functions that process data. Data engines define data processing jobs as operators chain together. They are a generalization on mapreudce since they can implement mapreduce computation but is more flexible.  
+	* Spark Resilient Distrubted Databases can recover data by tracking lineage and recomputing the lost data. No need to fully materialize intermediate state to HDFS.
+ * Declarative programming APIs are easier to use and query optimizers that make computation more efficient than imperative implementations.
+
+# Stream Processing
+* Difference to batch processing
+	* Data is unbounded and incremental
+ 	* Results need to be in near real-time.
+* Message Passing System
+	* What happens if the producer sends messages faster than consumption rate?
+ 	* What happens during node crashes?
+	* Direct messaging systems, application code must handle lost messages. Often does not account for producer or consumer crashes. 
+  * Message brokers
+    * Communication becomes asynchronous  	   
 
 
  
