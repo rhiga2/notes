@@ -65,6 +65,12 @@ p(y | x) = \frac{p(x|y) p(x)}{p(y)}
 
 # Transformations of Random Variables (TODO)
 
+# Important Distributions (TODO)
+## Bernoulli
+## Gaussian
+## The Exponential Family
+
+
 # Information Theory
 ## Entropy
 ## Kullback-Leiber Divergence
