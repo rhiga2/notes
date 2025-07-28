@@ -65,5 +65,17 @@ p(y | x) = \frac{p(x|y) p(x)}{p(y)}
 
 # Transformations of Random Variables (TODO)
 
+# Information Theory
+## Entropy
+## Kullback-Leiber Divergence
+* The KL divergence measures the dissimilarity between two distributions. 
+* Non-negativity and Jensen's inequality
+## Conditional and Joint Entropy
+* Conditional entropy $H[Y|X]$ is the expected additional information needed to specify $Y$ given $X$. 
+```math
+H[X, Y] = H[Y | X] + H[X] 
+```
+## Mutual Information and Independence
+
 
 
