@@ -63,7 +63,7 @@ p(y | x) = \frac{p(x|y) p(x)}{p(y)}
 * Our initial belief before evidence (called prior) denoted as $p(y)$.
 * After receiving evidence $x$, we update pur belief (called posterior) denoted as as $p(y | x)$.   
 
-
+# Transformations of Random Variables (TODO)
 
 
 
