@@ -9,10 +9,10 @@ Statistics
 * A type I error (also known as false positive) indicates that we incorrectly rejected the null hypothesis.
 * A type II error (also known as a miss) indicates that we incorrectly accepted the null hypothesis.
 
-|              | H_0      | H_1     |  
-| ------------ | -------- | ------- |
-| Accepted H_0 | Correct  | Type II |
-| Rejected H_0 | Type I   | Correct |
+|                | $H_0$    | $H_1$   |  
+| -------------- | -------- | ------- |
+| Accepted $H_0$ | Correct  | Type II |
+| Rejected $H_0$ | Type I   | Correct |
 
 
 ## 
@@ -20,12 +20,19 @@ Statistics
 # Estimation
 ## Terminology
 * Estimator: An estimator is a random variable computed from sample data that approximates the true value of a parameter. 
-* Bias: 
+* Bias: The difference between the true parameter and the estimator
+```math
+\text{bias} = \hat{\theta}_n - \theta
+```
+* Variance: The variance of the estimator. Note that is does not depend on $\theta$ itself. 
+```math
+\text{var} = E[(\hat{\theta}_n - E[\hat{\theta}_n ])^2]
+```
 * Weak Consistency: An estimator $\hat{\theta}_n$ is weakly consistent if $\hat{\theta}_n \xrightarrow{p} \theta$ as $n \rightarrow \infty$.
 * Strong Consistency: Similar to weak consistency, but converges almost surely.
 * Asymptotic Normality: An estimator $\hat{\theta}_n$ is asymptotically normal if
 ```math
-\sqrt{n} (\hat{\theta}_n - \theta \xrightarrow{d} N(0, \sigma^2)
+\sqrt{n} (\hat{\theta}_n - \theta) \xrightarrow{d} N(0, \sigma^2)
 ```
 
 ## Confidence Intervals
@@ -34,7 +41,7 @@ Statistics
 P(I \ni \theta) \ge 1 - \alpha
 ```
 * An asymptotic CI means that the bound holds in the limit as our sample size increases. 
-* Asymptotic normality allows us to construct confidence intervals for point estimators.
+* Asymptotic normality allows us to construct confidence intervals from point estimators.
 
 ### The Delta Method
 
