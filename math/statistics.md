@@ -1,5 +1,22 @@
 Statistics
 =============
+# Hypothesis Testing
+## Terminology
+* Hypothesis testing is a statistical method that uses data to make yes or no inferences about a population.
+* Null hypothesis $H_0$ is a statement that usually indicates the status quo such as a new drug having no effects.
+* Alternative hypothesis $H_1$ is a statement contradicting the null hypothesis.
+* The hypothesis test can either accept the null hypothesis or reject the null hypothesis (note we don't accept the alternative hypothesis.
+* A type I error (also known as false positive) indicates that we incorrectly rejected the null hypothesis.
+* A type II error (also known as a miss) indicates that we incorrectly accepted the null hypothesis.
+
+|              | H_0      | H_1     |  
+| ------------ | -------- | ------- |
+| Accepted H_0 | Correct  | Type II |
+| Rejected H_0 | Type I   | Correct |
+
+
+## 
+
 # Estimation
 ## Terminology
 * Estimator: An estimator is a random variable computed from sample data that approximates the true value of a parameter. 
@@ -28,10 +45,8 @@ P(I \ni \theta) \ge 1 - \alpha
 L_n(\theta) = p(x_1, ..., x_n) \stackrel{\text{iid}}{=} \prod_{i=1}^n p(x_i)
 ```
 * The goal of maximum likelihood is to find the parameter that maximizes the likelihood of the observed data.  
-* In many cases log-likelihood function is
+* In many cases, we instead maximize the log-likelihood function instead,
 ```math
 l_n(\theta) = \log p(x_1, ..., x_n) \stackrel{\text{iid}}{=} \sum_{i=1}^n \log p(x_i)
 ```
-
-
-# Hypothesis Testing
+### Relationship to KL Divergence
