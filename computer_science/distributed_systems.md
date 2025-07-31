@@ -9,9 +9,9 @@ Distributed Systems
 * Subquerying 
 ## Post-relational (NoSQL)
 * Why is relational DBs not enough?
-	* Impedence: Not every object fits well in structured tables. Objects with nested data.
-	* Schemas can evolve overtime. NoSQL can provide schema flexibility. 
- 	* Can be easier and more cost effective to retrieve. For example, if you always need object of type A with object of type B you can store both in the same document essentially pre-joining data, whereas relational DBs often store A and B in separate tables and join at runtime.  
+  * Impedence: Not every object fits well in structured tables. Objects with nested data.
+  * Schemas can evolve overtime. NoSQL can provide schema flexibility. 
+  * Can be easier and more cost effective to retrieve. For example, if you always need object of type A with object of type B you can store both in the same document essentially pre-joining data, whereas relational DBs often store A and B in separate tables and join at runtime.  
 * Examples of NoSQL data models include:
   * Key-value stores (i.e. DynamoDB)
   * Document DBs (i.e. MongoDB): Stores documents in json/yaml/xml format.
@@ -20,9 +20,9 @@ Distributed Systems
 ## Encoding Data
 * Data is stored in many formats depending on the context:
   * In-memory storage: often uses in-memory data structures such as objects in OOP. 
- 	* Long-term storage in databases: uses relational format, column-oriented format, key-value format, JSON/XML format for document storage, 
+  * Long-term storage in databases: uses relational format, column-oriented format, key-value format, JSON/XML format for document storage, 
   * Data transferred in microservices: often uses binary encodings such as Protobuf, Avro, Thrift. Binary encodings are compact and save on bandwidth. 
-    * The process of encoding data into binary is called serialization.  
+  * The process of encoding data into binary is called serialization.  
   * Data transferred over APIs: Often uses human-readable format like JSON/XML. This is because external developers must be able to understand the format of the data in order to use the APIs in their own application. 
   * Data transferred in asyncronous message queues: Uses JSON/XML or uses binary encoding. 
 * Forward and Backward Compatibility
@@ -94,7 +94,7 @@ Distributed Systems
 # Distributed Systems Concepts
 ## Problems
 * There are several issues concerning distributed systems including:
-	* Partial Failures and Faults: some nodes in a cluster are bound to fail. 
+  * Partial Failures and Faults: some nodes in a cluster are bound to fail. 
   * Unreliable Networks: messages and connections between nodes may be dropped or timeout.
   * Unreliable Clocks: Two nodes may read different times. Clocks may skew overtime. Relying on different clocks to determine order of requests is unreliable.
   * Process Pauses: Processes can be preempted. Process is given exclusive update access. If it pauses and timeouts, another node may be given same priviledge. When the pause ends, we may have situations where both nodes think it owns the the exclusive access.
@@ -113,32 +113,34 @@ Distributed Systems
 # Batch Processing
 ## MapReduce
 * Join algorithms
-	* Sort-merge joins
- 	* Broadcast hash joins
+  * Sort-merge joins
+  * Broadcast hash joins
   * Partitioned hash joins
 ## Beyond Mapreduce
 * Problems with mapreduce
-	* Lack flexbility since not every data processing job needs to map-sort-reduce in that order. 
- 	* Not optimized to store intermediate state (aka materialization). Intermediate state between mapreduce jobs is published to HDFS, which can be overkill.
+  * Lack flexbility since not every data processing job needs to map-sort-reduce in that order. 
+  * Not optimized to store intermediate state (aka materialization). Intermediate state between mapreduce jobs is published to HDFS, which can be overkill.
   * Cannot implement iterative "repeat until done" algorithms.
   * Lacks interactive (REPL) data exploration capabilities.
   * Creating mapreduce jobs is often done through imperative programming. 
 * Data flow engines (i.e. Spark)
-	* Often keep intermediate computational results in memory avoiding frequent disk writes like in mapreduce.  
-	* Operators are functions that process data. Data engines define data processing jobs as operators chain together. They are a generalization on mapreudce since they can implement mapreduce computation but is more flexible.  
-	* Spark Resilient Distrubted Databases can recover data by tracking lineage and recomputing the lost data. No need to fully materialize intermediate state to HDFS.
+  * Often keep intermediate computational results in memory avoiding frequent disk writes like in mapreduce.  
+  * Operators are functions that process data. Data engines define data processing jobs as operators chain together. They are a generalization on mapreudce since they can implement mapreduce computation but is more flexible.  
+  * Spark Resilient Distrubted Databases can recover data by tracking lineage and recomputing the lost data. No need to fully materialize intermediate state to HDFS.
  * Declarative programming APIs are easier to use and query optimizers that make computation more efficient than imperative implementations.
 
 # Stream Processing
 * Difference to batch processing
-	* Data is unbounded and incremental
- 	* Results need to be in near real-time.
+  * Data is unbounded and incremental
+  * Results need to be in near real-time.
 * Message Passing System
-	* What happens if the producer sends messages faster than consumption rate?
- 	* What happens during node crashes?
-	* Direct messaging systems, application code must handle lost messages. Often does not account for producer or consumer crashes. 
+  * What happens if the producer sends messages faster than consumption rate?
+  * What happens during node crashes?
+  * Direct messaging systems, application code must handle lost messages. Often does not account for producer or consumer crashes. 
   * Message brokers
-    * Communication becomes asynchronous  	   
+    * Communication becomes asynchronous
+    * Load balancing v fan out
+    *  	   
 
 
  
