@@ -140,7 +140,11 @@ Distributed Systems
   * Message brokers
     * Communication becomes asynchronous
     * Load balancing v fan out
-    *  	   
+  * Partitioned Logs
+    * Messages are appended and consumers keep track of offset. Messages are not deleted when a consumer reads them. 
+    * Circular buffer on disk. Old records will eventually get deleted.
+    * Allows us to replay old data (not too old that the data was deleted).
+    * This is similar to replication logs where the leader is the broker and followers are consumers.    	   
 
 
  
