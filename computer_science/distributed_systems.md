@@ -144,7 +144,14 @@ Distributed Systems
     * Messages are appended and consumers keep track of offset. Messages are not deleted when a consumer reads them. 
     * Circular buffer on disk. Old records will eventually get deleted.
     * Allows us to replay old data (not too old that the data was deleted).
-    * This is similar to replication logs where the leader is the broker and followers are consumers.    	   
+    * This is similar to replication logs where the leader is the broker and followers are consumers. 
+* Message Passing Applied to DBs
+  * Change data capture (CDC) acts similar to message passing systems. Write to DB triggers CDC.
+  * Changes are queued in a log of data changes and then consumed by search index and data warehouse.
+  * Log compaction and consistent snapshot makes it so that the log does not become infinitely large.
+  * Event sourcing is similar to CDC but CDC is a stream of mutable operations on a DB, event sourcing is a stream of immeutable events on an applicaiton. 
+  * Event sourcing cannot be log compacted in the same way.
+  * 
 
 
  
