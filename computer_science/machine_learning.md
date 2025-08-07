@@ -1,6 +1,10 @@
 Machine Learning
 ================
 # Linear Regression
+## Linear Model
+```math
+y = f_w(x) = w^Tx = b + \sum_{i=1}^d w_i x_i
+```
 ## Regularization
 * MAP Interpretation of L2 Regularization: prior of weights $w$ are independent, zero mean Gaussians with variance $\sigma^2$.
 
