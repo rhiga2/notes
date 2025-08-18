@@ -151,7 +151,32 @@ Distributed Systems
   * Log compaction and consistent snapshot makes it so that the log does not become infinitely large.
   * Event sourcing is similar to CDC but CDC is a stream of mutable operations on a DB, event sourcing is a stream of immeutable events on an applicaiton. 
   * Event sourcing cannot be log compacted in the same way.
-  * 
+* Stream Processing
+  * Output of Stream Processing
+    * Push to data warehouse or search index
+    * Push to user via notification or dashboard
+    * Transform into another output stream
+  * Complex Event Processing
+    * Queries become persistent while data stream is transient. Reverse of traditional Dbs
+    * Queries detect patterns in streams. Engine emits complex event when pattern detected For example, fraud detection.
+  * Stream Analytics
+    * Perform aggregations on data
+  * Maintaining materialized views
+  * Search (i.e. keyword search) on stream
+
+# Communication
+## Layers
+### TCP
+* Breaks byte stream into segments that are numbered
+* Each segment must be acked by receiver.
+* Resend when ack not received after a timeout.
+* Checksum to determine integrity of delivered segments.
+* Connection must be established via socket before any app data transferred.
+* Connections can rate limit data transfer to not overwhelm the receiver.
+* Sender performs congestion control by maintaining the number of unacked segments (congestion window) at a given time (bandwidth = congestion window / round trip time).
+### UDP
+* Connectionless protocol. Data is sent via packets called datagrams.
+* Datagrams do not have a sequence number and are not acked.
 
 
  
