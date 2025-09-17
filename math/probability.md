@@ -24,7 +24,7 @@ Probability
 * Bayesian: Sometimes we may not have a lot of repeated trials regarding an outcome. In Bayesian intepretation, $P(A)$ indicates our belief about the likehood of $A$ occurring. Once we observe data we can update our beliefs using Bayes rule. 
 
 ## Random Variables 
-* A random variable is a function mapping an outcome to a real number.
+* A random variable $X: \Omega \rightarrow \mathbb{R}$ is a function mapping an outcome to a real number.
 * $X$ is a discrete random variable if the values of $X$ can be assigned probability.
   * The function that assigned probability to a random variable is called a mass function denoted as $p(x) = P(X=x)$
   * Note that summing over all values of $X$ equal to $1$. $\sum_x p(x) = 1$
