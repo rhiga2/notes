@@ -6,7 +6,7 @@ Math for ML
 2. 
 ## Conditioning, Independence, and Bayes Rule
 ## Random Variables (RVs)
-* A random variable is a function $X: \Omega \rightarrow mathbb{R}$ mapping an element of the same space to a number.
+* A random variable is a function $X: \Omega \rightarrow \mathbb{R}$ mapping an element of the same space to a number.
 * Functions of RVs are RVs
 ## Expectations, Variance, and Moments
 ## Joint and Conditional Distributions
