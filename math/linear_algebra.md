@@ -47,6 +47,8 @@ Linear Algebra
 * Two vector are orthogonal if their inner product is $0$.
 * Two subspaces are orthogonal if the inner product of any vector in one subspace is orthogonal to any vector in the other subspace.
 ### Orthogonality of Subspaces
+* Column space is orthogonal to left nullspace
+* Nullspace 
 ### Orthogonal Projections
 * A projection is a mapping of a vector onto a subspace. Note that any vector already in the subspace is mapped to itself, meaning that projections are idempotent
 since once you project a vector onto a subspace applying the same projection will get you the same result.
