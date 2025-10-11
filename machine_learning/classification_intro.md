@@ -48,7 +48,7 @@ $$
 * Under the Naive Bayes assumption, the covariance matrix is diagonal. 
 
 $$
-d_k(x) = \log \pi_k - \frac{1}{2} \sum_{j=1}^d \frac{(x_j - \mu_{kj})}{\sigma_{kj}}
+d_k(x) = \log \pi_k - \frac{1}{2} \sum_{j=1}^d \frac{(x_j - \mu_{kj})^2}{\sigma_{kj}^2}
 $$
 
 * With QDA we have to estimate:
