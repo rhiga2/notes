@@ -101,12 +101,14 @@ $$
 1. If $X \ne 0$, then $A - \lambda I$ is singular. We can solve $|A-\lambda I| = 0$ for $\lambda$'s.
 2. For each $\lambda$ in step 1, we can find the basis of $N(A - \lambda I)$ to get $x$.
 * Note eigenvectors are directions. Thus any scaling factors on the eigenvectors don't matter.
+* Also note that eigenvectors and eigenvalues may not be real. 
 ## Diagonalization
 * We can organize each eigenvectors of $A$ into columns of matrix $S$.
 * Let $\Lambda$ be a diagonal matrix with eigenvalues in the diagonal. Note that the order of eigenvectors in $S$ must correspond to the order of eigenvalues in $\Lambda$.
 * We have $AS = S \Lambda$.
 * If $S$ is invertible (eigenvectors are linear independent, known as diagonalizability), then $A = S\Lambda S^{-1}$
 ### Diagonalization of Symmetric Matrics 
+* Note eigenvectors and eigenvalues of real symmetric matrices are real. 
 * Eigenvectors corresponding to different eigenvalues of a real symmetric matric are orthogonal.
   * Assume $\lambda_1 \ne \lambda_2$ and $A = A^T$.
   * Prove inner product of $x_1$ and $x_2$ is $0$. 
@@ -120,5 +122,11 @@ $$
 $$
 
 * Since eigenvectors are orthonormal (scale does not matter), we know that the eigenvector matrix $Q$ is orthogonal. Thus $A = Q\Lambda Q^T$.
+# Definite Matrice
+* A symmetric matrix $M$ is positive definite if 
+  * For any $x \ne 0$, $x^TMx > 0$
+  
 
-# Semi-Positive Definite Matrices
+# Singular Value Decomposition
+* Any matrix $A$ can be decomposed as $U\SigmaV^T$.
+  * Matrix $U$  
