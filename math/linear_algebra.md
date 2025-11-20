@@ -14,14 +14,32 @@ Linear Algebra
   * Any linear transformation $T$ can be expressed as matrix multiplication. 
 
 # System of Linear Equation $Ax = y$. 
-* Given $A$ and $y$ find $x$.
+* Given $A$ and $y$ find $x$ in $Ax=y$
 * System of linear equations can have:
   * No solution
   * Exactly one solution
   * Infinitely many solutions
+ 
 ## Gaussian Elimination
-* Pivot and free columns
-* Rank of $A$: the number of pivot columns in $A$.
+* Gaussian elimination is a method used to solve a system of linear equations by reducing matrix $A$ to a reduced form.
+* Row echelon form:
+  * All-zero rows are at the bottom.
+  * The leading non-zero entry in a row called the pivot is to the right of pivots in bottom rows.
+* Reduced row echelon form:
+  * Matrix is in row echelon form.
+  * Pivots are one.
+  * All entries to the left of pivot are zero. 
+* Elementary row operations: Gaussian elimination uses the following operations
+  * Permute two rows.
+  * Scale a row.
+  * Add scaled row to another row.
+  * We transform bpth $A$ and $y$ simulataneously. 
+* Existence and uniqueness
+  * Solution does not exist if a row of all zeros corresponds to a non-zero entry in transformed $y$
+  * Solution is unique if every column in reduced form has a pivot
+  * Solution is non-unique if there are columns without pivots
+* Rank: Number of pivots in reduced form. A matrix has full rank if every column and every row contains a pivot. 
+
 ## Invertibility and Determinants 
 * Invertibility: If $A$ is square and fully ranked, then we know that A have an inverse such that $AA^{-1} = A^{-1}A = I$.
   * A non-invertible matrix is called singular.
